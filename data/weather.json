@@ -1,0 +1,17 @@
+{
+  "category": "weather",
+  "title": "Weather",
+  "description": "Korean weather and climate words",
+  "words": [
+    { "korean": "날씨", "romanization": "nalssi", "filipino": "Panahon", "english": "Weather" },
+    { "korean": "맑다", "romanization": "makda", "filipino": "Maaliwalas", "english": "Clear" },
+    { "korean": "흐리다", "romanization": "heurida", "filipino": "Maulap", "english": "Cloudy" },
+    { "korean": "비", "romanization": "bi", "filipino": "Ulan", "english": "Rain" },
+    { "korean": "눈", "romanization": "nun", "filipino": "Niyebe", "english": "Snow" },
+    { "korean": "바람", "romanization": "baram", "filipino": "Hangin", "english": "Wind" },
+    { "korean": "태양", "romanization": "taeyang", "filipino": "Araw", "english": "Sun" },
+    { "korean": "달", "romanization": "dal", "filipino": "Buwan", "english": "Moon" },
+    { "korean": "별", "romanization": "byeol", "filipino": "Bituin", "english": "Star" },
+    { "korean": "구름", "romanization": "gureum", "filipino": "Ulap", "english": "Cloud" }
+  ]
+}

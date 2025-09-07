@@ -1,0 +1,17 @@
+{
+  "category": "shopping",
+  "title": "Shopping",
+  "description": "Korean shopping and commerce words",
+  "words": [
+    { "korean": "쇼핑", "romanization": "syoping", "filipino": "Pamimili", "english": "Shopping" },
+    { "korean": "가게", "romanization": "gage", "filipino": "Tindahan", "english": "Store" },
+    { "korean": "시장", "romanization": "sijang", "filipino": "Pamilihan", "english": "Market" },
+    { "korean": "돈", "romanization": "don", "filipino": "Pera", "english": "Money" },
+    { "korean": "가격", "romanization": "gagyeok", "filipino": "Presyo", "english": "Price" },
+    { "korean": "사다", "romanization": "sada", "filipino": "Bumili", "english": "Buy" },
+    { "korean": "팔다", "romanization": "palda", "filipino": "Magbenta", "english": "Sell" },
+    { "korean": "계산", "romanization": "gyesan", "filipino": "Bayaran", "english": "Pay" },
+    { "korean": "할인", "romanization": "harin", "filipino": "Diskuwento", "english": "Discount" },
+    { "korean": "영수증", "romanization": "yeongsujeung", "filipino": "Resibo", "english": "Receipt" }
+  ]
+}
