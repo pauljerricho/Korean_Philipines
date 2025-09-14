@@ -1,92 +1,123 @@
-# 🇰🇷 Korean Learning App 🇵🇭
+# 🇰🇷 한국어 Korean Learning App 한국어
 
-A comprehensive Korean language learning application with Filipino translations, designed for Filipino learners of Korean.
+A modern, interactive Korean language learning application built with React, Vite, and Tailwind CSS. Learn Korean with Filipino translations!
 
-## Features
+## ✨ Features
 
-### 📚 Vocabulary Learning
-- **10+ Categories**: Colors, Emotions, Family, Food, Numbers, Shopping, Time, Weather, Animals, Body, Clothes, House, School, Transport
-- **Bilingual Support**: Korean, English, and Filipino translations
-- **Audio Pronunciation**: Text-to-speech for both Korean and Filipino
-- **Interactive Learning**: Click through words one by one
-- **Progress Tracking**: Mark words as learned
+- 📚 **Vocabulary Learning**: Interactive flashcards with Korean, English, and Filipino translations
+- 📖 **Grammar Lessons**: Structured grammar lessons for beginner, intermediate, and advanced levels
+- 🔤 **Hangul Learning**: Interactive Korean alphabet learning with audio pronunciation
+- 🎵 **Audio Support**: Text-to-speech for Korean and Filipino pronunciations
+- 💾 **Progress Tracking**: Save learned words with localStorage
+- 📱 **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
+- 🎨 **Modern UI**: Beautiful, intuitive interface with smooth animations
 
-### 📖 Grammar Learning
-- **Three Levels**: Beginner, Intermediate, Advanced
-- **Comprehensive Lessons**: Sentence structure, particles, conjugations, and more
-- **Practice Questions**: Interactive exercises with immediate feedback
-- **Quiz System**: Test your knowledge with multiple-choice questions
-- **Real Examples**: Korean sentences with English and Filipino translations
+## 🚀 Quick Start
 
-## How to Use
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
-### Local Development
-1. Clone this repository
-2. Install dependencies: `npm install`
-3. Start the server: `node server.js`
-4. Open http://localhost:3000
+### Installation
 
-### GitHub Pages (Static Version)
-1. Use `index_static.html` as your main page
-2. All data is loaded from JavaScript files in the `data/` folder
-3. No server required - works directly in the browser
-
-## File Structure
-
-```
-├── index.html              # Main application (requires server)
-├── index_static.html       # Static version for GitHub Pages
-├── script.js              # Main JavaScript (server version)
-├── script_static.js       # Static JavaScript (no server)
-├── server.js              # Node.js server
-├── styles.css             # Application styles
-├── data/                  # Data files
-│   ├── categories.js      # Vocabulary categories
-│   ├── words.js          # Vocabulary words
-│   ├── grammar_levels.js # Grammar difficulty levels
-│   ├── grammar_lessons.js # Grammar lessons
-│   ├── grammar_examples.js # Grammar examples
-│   ├── grammar_rules.js  # Grammar rules
-│   ├── grammar_particles.js # Korean particles
-│   ├── grammar_conjugations.js # Verb conjugations
-│   ├── grammar_practice.js # Practice questions
-│   └── grammar_quiz.js   # Quiz questions
-└── README.md
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/korean-learning-app.git
+cd korean-learning-app
 ```
 
-## Data Sources
+2. Install dependencies:
+```bash
+npm install
+```
 
-The application uses a comprehensive database of Korean vocabulary and grammar:
+3. Start the development server:
+```bash
+npm run dev
+```
 
-- **Vocabulary**: 100+ words per category with Korean, English, and Filipino translations
-- **Grammar**: 50+ lessons covering beginner to advanced topics
-- **Practice**: 100+ interactive questions
-- **Quiz**: 50+ quiz questions for testing knowledge
+4. Open your browser and visit `http://localhost:5173`
 
-## Technologies Used
+### Build for Production
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Backend**: Node.js, Express (for local development)
-- **Data**: SQLite database (converted to JavaScript modules)
-- **Audio**: Web Speech API
-- **Icons**: Font Awesome
+```bash
+npm run build
+```
 
-## Contributing
+## 📁 Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── VocabularyTab.jsx
+│   ├── GrammarTab.jsx
+│   └── HangulTab.jsx
+├── data/               # Data files
+│   ├── vocabularyData.js
+│   └── grammarData.js
+├── App.jsx             # Main app component
+├── main.jsx           # Entry point
+└── index.css          # Global styles
+```
+
+## 🎯 Learning Features
+
+### Vocabulary Tab
+- Category-based word learning
+- Audio pronunciation for Korean and Filipino
+- Progress tracking with heart system
+- Smooth navigation between words
+
+### Grammar Tab
+- Three difficulty levels (Beginner, Intermediate, Advanced)
+- Interactive lesson navigation
+- Example sentences with highlighting
+- Korean, English, and Filipino translations
+
+### Hangul Tab
+- Interactive Korean alphabet learning
+- Consonants, vowels, and combinations
+- Audio pronunciation for each character
+- Learning tips and practice exercises
+
+## 🛠️ Technologies Used
+
+- **React 18** - UI library
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Styling framework
+- **Lucide React** - Icons
+- **Web Speech API** - Audio pronunciation
+
+## 📱 Browser Support
+
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## License
+## 📄 License
 
-This project is open source and available under the MIT License.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Support
+## 🙏 Acknowledgments
 
-For questions or support, please open an issue on GitHub.
+- Korean language data and examples
+- Filipino translations
+- Open source community
+- React and Vite teams
+
+## 📞 Support
+
+If you have any questions or suggestions, please open an issue or contact us.
 
 ---
 
-Made with ❤️ for Korean language learners in the Philippines
+Made with ❤️ for Korean language learners

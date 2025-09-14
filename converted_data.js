@@ -1,5 +1,3 @@
-
-// ===== VOCABULARY DATA =====
 const vocabularyData = {
   "colors": [
     {
@@ -5195,1602 +5193,246 @@ const vocabularyData = {
   ]
 };
 
-{
+const grammarData = {
   "beginner": {
     "lessons": [
-      {
-        "title": "Sentence Structure (문장 구조)",
-        "explanation": "Korean follows Subject-Object-Verb (SOV) order, different from English and Filipino."
-      },
-      {
-        "title": "Basic Particles (기본 조사)",
-        "explanation": "이/가, 을/를, 에, 에서 are the most important particles to learn first."
-      },
-      {
-        "title": "Present Tense -아/어요",
-        "explanation": "Basic present tense ending for polite speech."
-      },
-      {
-        "title": "Past Tense -았/었어요",
-        "explanation": "Past tense ending. Use -았 after ㅏ/ㅗ vowels, -었 after other vowels."
-      },
-      {
-        "title": "Future Tense -겠어요",
-        "explanation": "Future tense ending expressing intention or prediction."
-      },
-      {
-        "title": "Particle 이/가 (주격 조사)",
-        "explanation": "이/가 are subject markers. Use 이 after consonants, 가 after vowels."
-      },
-      {
-        "title": "Particle 을/를 (목적격 조사)",
-        "explanation": "을/를 are object markers. Use 을 after consonants, 를 after vowels."
-      },
-      {
-        "title": "Particle 에 (장소 조사)",
-        "explanation": "에 indicates location or destination. Used with static verbs like 있다, 없다."
-      },
-      {
-        "title": "Particle 에서 (장소 조사)",
-        "explanation": "에서 indicates place of action. Used with action verbs."
-      },
-      {
-        "title": "Particles 와/과 (연결 조사)",
-        "explanation": "와/과 mean 'and' or 'with'. Use 와 after vowels, 과 after consonants."
-      },
-      {
-        "title": "Particle 도 (부가 조사)",
-        "explanation": "도 means 'also' or 'too'. Can replace other particles."
-      },
-      {
-        "title": "Particle 의 (소유격 조사)",
-        "explanation": "의 indicates possession, like 'of' or 's in English."
-      },
-      {
-        "title": "Particle 한테/에게 (수혜자 조사)",
-        "explanation": "한테/에게 indicate recipient of action. Use 한테 for people, 에게 for both."
-      },
-      {
-        "title": "Particle 부터/까지 (범위 조사)",
-        "explanation": "부터 means 'from', 까지 means 'to' or 'until'."
-      },
-      {
-        "title": "Particle 만 (한정 조사)",
-        "explanation": "만 means 'only' or 'just', limiting the scope."
-      },
-      {
-        "title": "Particle 은/는 (주제 조사)",
-        "explanation": "은/는 are topic markers, different from subject markers 이/가."
-      },
-      {
-        "title": "Negative -안 (부정)",
-        "explanation": "안 is placed before verbs to make them negative."
-      },
-      {
-        "title": "Negative -지 않다 (부정)",
-        "explanation": "지 않다 is another way to make verbs negative, more formal."
-      },
-      {
-        "title": "Question Words (의문사)",
-        "explanation": "Basic question words: 누구 (who), 무엇 (what), 어디 (where), 언제 (when)."
-      },
-      {
-        "title": "Numbers (숫자)",
-        "explanation": "Korean has two number systems: Native Korean and Sino-Korean."
-      },
-      {
-        "title": "Time Expressions (시간 표현)",
-        "explanation": "How to express time: 오늘 (today), 어제 (yesterday), 내일 (tomorrow)."
-      },
-      {
-        "title": "Family Terms (가족 호칭)",
-        "explanation": "Korean family terms change based on the speaker's gender and age."
-      },
-      {
-        "title": "Particle 로/으로 (방향/수단 조사)",
-        "explanation": "로/으로 indicate direction or means. Use 로 after vowels, 으로 after consonants."
-      },
-      {
-        "title": "Particle 하고 (연결 조사)",
-        "explanation": "하고 is a casual way to say 'and' or 'with'."
-      },
-      {
-        "title": "Particle 보다 (비교 조사)",
-        "explanation": "보다 is used for comparisons, meaning 'than' or 'compared to'."
-      },
-      {
-        "title": "Particle 처럼 (비유 조사)",
-        "explanation": "처럼 means 'like' or 'as', used for comparisons."
-      },
-      {
-        "title": "Particle 만큼 (정도 조사)",
-        "explanation": "만큼 means 'as much as' or 'to the extent of'."
-      },
-      {
-        "title": "Particle 사이 (사이 조사)",
-        "explanation": "사이 means 'between' or 'among'."
-      },
-      {
-        "title": "Particle 동안 (기간 조사)",
-        "explanation": "동안 means 'for' or 'during' a period of time."
-      },
-      {
-        "title": "Particle 전에 (시간 조사)",
-        "explanation": "전에 means 'before' in time expressions."
-      }
+      {"title": "Sentence Structure (문장 구조)", "explanation": "Korean follows Subject-Object-Verb (SOV) order, different from English and Filipino."},
+      {"title": "Basic Particles (기본 조사)", "explanation": "이/가, 을/를, 에, 에서 are the most important particles to learn first."},
+      {"title": "Present Tense -아/어요", "explanation": "Basic present tense ending for polite speech."},
+      {"title": "Past Tense -았/었어요", "explanation": "Past tense ending. Use -았 after ㅏ/ㅗ vowels, -었 after other vowels."},
+      {"title": "Future Tense -겠어요", "explanation": "Future tense ending expressing intention or prediction."},
+      {"title": "Particle 이/가 (주격 조사)", "explanation": "이/가 are subject markers. Use 이 after consonants, 가 after vowels."},
+      {"title": "Particle 을/를 (목적격 조사)", "explanation": "을/를 are object markers. Use 을 after consonants, 를 after vowels."},
+      {"title": "Particle 에 (장소 조사)", "explanation": "에 indicates location or destination. Used with static verbs like 있다, 없다."},
+      {"title": "Particle 에서 (장소 조사)", "explanation": "에서 indicates place of action. Used with action verbs."},
+      {"title": "Particles 와/과 (연결 조사)", "explanation": "와/과 mean 'and' or 'with'. Use 와 after vowels, 과 after consonants."},
+      {"title": "Particle 도 (부가 조사)", "explanation": "도 means 'also' or 'too'. Can replace other particles."},
+      {"title": "Particle 의 (소유격 조사)", "explanation": "의 indicates possession, like 'of' or 's in English."},
+      {"title": "Particle 한테/에게 (수혜자 조사)", "explanation": "한테/에게 indicate recipient of action. Use 한테 for people, 에게 for both."},
+      {"title": "Particle 부터/까지 (범위 조사)", "explanation": "부터 means 'from', 까지 means 'to' or 'until'."},
+      {"title": "Particle 만 (한정 조사)", "explanation": "만 means 'only' or 'just', limiting the scope."},
+      {"title": "Particle 은/는 (주제 조사)", "explanation": "은/는 are topic markers, different from subject markers 이/가."},
+      {"title": "Negative -안 (부정)", "explanation": "안 is placed before verbs to make them negative."},
+      {"title": "Negative -지 않다 (부정)", "explanation": "지 않다 is another way to make verbs negative, more formal."},
+      {"title": "Question Words (의문사)", "explanation": "Basic question words: 누구 (who), 무엇 (what), 어디 (where), 언제 (when)."},
+      {"title": "Numbers (숫자)", "explanation": "Korean has two number systems: Native Korean and Sino-Korean."},
+      {"title": "Time Expressions (시간 표현)", "explanation": "How to express time: 오늘 (today), 어제 (yesterday), 내일 (tomorrow)."},
+      {"title": "Family Terms (가족 호칭)", "explanation": "Korean family terms change based on the speaker's gender and age."},
+      {"title": "Particle 로/으로 (방향/수단 조사)", "explanation": "로/으로 indicate direction or means. Use 로 after vowels, 으로 after consonants."},
+      {"title": "Particle 하고 (연결 조사)", "explanation": "하고 is a casual way to say 'and' or 'with'."},
+      {"title": "Particle 보다 (비교 조사)", "explanation": "보다 is used for comparisons, meaning 'than' or 'compared to'."},
+      {"title": "Particle 처럼 (비유 조사)", "explanation": "처럼 means 'like' or 'as', used for comparisons."},
+      {"title": "Particle 만큼 (정도 조사)", "explanation": "만큼 means 'as much as' or 'to the extent of'."},
+      {"title": "Particle 사이 (사이 조사)", "explanation": "사이 means 'between' or 'among'."},
+      {"title": "Particle 동안 (기간 조사)", "explanation": "동안 means 'for' or 'during' a period of time."},
+      {"title": "Particle 전에 (시간 조사)", "explanation": "전에 means 'before' in time expressions."}
     ],
     "practice": [
-      {
-        "question": "What is the correct word order in Korean?",
-        "options": [
-          "SVO",
-          "SOV",
-          "VSO",
-          "VOS"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Which particle marks the subject?",
-        "options": [
-          "을/를",
-          "이/가",
-          "에",
-          "에서"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Which particle marks the object?",
-        "options": [
-          "이/가",
-          "을/를",
-          "에",
-          "에서"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does 에 indicate?",
-        "options": [
-          "Action",
-          "Location",
-          "Time",
-          "Possession"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does 에서 indicate?",
-        "options": [
-          "Location",
-          "Action place",
-          "Time",
-          "Possession"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you say 'and' in Korean?",
-        "options": [
-          "와/과",
-          "이/가",
-          "을/를",
-          "에"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What does 도 mean?",
-        "options": [
-          "Only",
-          "Also/too",
-          "From",
-          "To"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Which particle indicates possession?",
-        "options": [
-          "이/가",
-          "을/를",
-          "의",
-          "에"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "What does 한테/에게 indicate?",
-        "options": [
-          "Subject",
-          "Object",
-          "Recipient",
-          "Location"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "What does 부터 mean?",
-        "options": [
-          "To",
-          "From",
-          "At",
-          "In"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does 까지 mean?",
-        "options": [
-          "From",
-          "To/until",
-          "At",
-          "In"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does 만 mean?",
-        "options": [
-          "And",
-          "Only/just",
-          "Or",
-          "But"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What is the difference between 이/가 and 은/는?",
-        "options": [
-          "No difference",
-          "이/가 subject, 은/는 topic",
-          "이/가 topic, 은/는 subject",
-          "Both are objects"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you make a verb negative with 안?",
-        "options": [
-          "After verb",
-          "Before verb",
-          "Replace verb",
-          "Add to end"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does -지 않다 mean?",
-        "options": [
-          "Positive",
-          "Negative",
-          "Question",
-          "Command"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does 누구 mean?",
-        "options": [
-          "What",
-          "Where",
-          "Who",
-          "When"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "What does 무엇 mean?",
-        "options": [
-          "Who",
-          "What",
-          "Where",
-          "When"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does 어디 mean?",
-        "options": [
-          "Who",
-          "What",
-          "Where",
-          "When"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "What does 언제 mean?",
-        "options": [
-          "Who",
-          "What",
-          "Where",
-          "When"
-        ],
-        "correct": 3
-      },
-      {
-        "question": "How many number systems does Korean have?",
-        "options": [
-          "One",
-          "Two",
-          "Three",
-          "Four"
-        ],
-        "correct": 1
-      }
+      {"question": "What is the correct word order in Korean?", "options": ["SVO", "SOV", "VSO", "VOS"], "correct": 1},
+      {"question": "Which particle marks the subject?", "options": ["을/를", "이/가", "에", "에서"], "correct": 1},
+      {"question": "Which particle marks the object?", "options": ["이/가", "을/를", "에", "에서"], "correct": 1},
+      {"question": "What does 에 indicate?", "options": ["Action", "Location", "Time", "Possession"], "correct": 1},
+      {"question": "What does 에서 indicate?", "options": ["Location", "Action place", "Time", "Possession"], "correct": 1},
+      {"question": "How do you say 'and' in Korean?", "options": ["와/과", "이/가", "을/를", "에"], "correct": 0},
+      {"question": "What does 도 mean?", "options": ["Only", "Also/too", "From", "To"], "correct": 1},
+      {"question": "Which particle indicates possession?", "options": ["이/가", "을/를", "의", "에"], "correct": 2},
+      {"question": "What does 한테/에게 indicate?", "options": ["Subject", "Object", "Recipient", "Location"], "correct": 2},
+      {"question": "What does 부터 mean?", "options": ["To", "From", "At", "In"], "correct": 1},
+      {"question": "What does 까지 mean?", "options": ["From", "To/until", "At", "In"], "correct": 1},
+      {"question": "What does 만 mean?", "options": ["And", "Only/just", "Or", "But"], "correct": 1},
+      {"question": "What is the difference between 이/가 and 은/는?", "options": ["No difference", "이/가 subject, 은/는 topic", "이/가 topic, 은/는 subject", "Both are objects"], "correct": 1},
+      {"question": "How do you make a verb negative with 안?", "options": ["After verb", "Before verb", "Replace verb", "Add to end"], "correct": 1},
+      {"question": "What does -지 않다 mean?", "options": ["Positive", "Negative", "Question", "Command"], "correct": 1},
+      {"question": "What does 누구 mean?", "options": ["What", "Where", "Who", "When"], "correct": 2},
+      {"question": "What does 무엇 mean?", "options": ["Who", "What", "Where", "When"], "correct": 1},
+      {"question": "What does 어디 mean?", "options": ["Who", "What", "Where", "When"], "correct": 2},
+      {"question": "What does 언제 mean?", "options": ["Who", "What", "Where", "When"], "correct": 3},
+      {"question": "How many number systems does Korean have?", "options": ["One", "Two", "Three", "Four"], "correct": 1}
     ],
     "quiz": [
-      {
-        "question": "What is the basic sentence structure in Korean?",
-        "options": [
-          "SVO",
-          "SOV",
-          "VSO",
-          "VOS"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Which particle is used for the subject?",
-        "options": [
-          "을/를",
-          "이/가",
-          "에",
-          "에서"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Which particle is used for the object?",
-        "options": [
-          "이/가",
-          "을/를",
-          "에",
-          "에서"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does 에 indicate?",
-        "options": [
-          "Action",
-          "Location",
-          "Time",
-          "Possession"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does 에서 indicate?",
-        "options": [
-          "Location",
-          "Action place",
-          "Time",
-          "Possession"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you say 'and' in Korean?",
-        "options": [
-          "와/과",
-          "이/가",
-          "을/를",
-          "에"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What does 도 mean?",
-        "options": [
-          "Only",
-          "Also/too",
-          "From",
-          "To"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Which particle indicates possession?",
-        "options": [
-          "이/가",
-          "을/를",
-          "의",
-          "에"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "What does 한테/에게 indicate?",
-        "options": [
-          "Subject",
-          "Object",
-          "Recipient",
-          "Location"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "What does 부터 mean?",
-        "options": [
-          "To",
-          "From",
-          "At",
-          "In"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does 까지 mean?",
-        "options": [
-          "From",
-          "To/until",
-          "At",
-          "In"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does 만 mean?",
-        "options": [
-          "And",
-          "Only/just",
-          "Or",
-          "But"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What is the difference between 이/가 and 은/는?",
-        "options": [
-          "No difference",
-          "이/가 subject, 은/는 topic",
-          "이/가 topic, 은/는 subject",
-          "Both are objects"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you make a verb negative with 안?",
-        "options": [
-          "After verb",
-          "Before verb",
-          "Replace verb",
-          "Add to end"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does -지 않다 mean?",
-        "options": [
-          "Positive",
-          "Negative",
-          "Question",
-          "Command"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does 누구 mean?",
-        "options": [
-          "What",
-          "Where",
-          "Who",
-          "When"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "What does 무엇 mean?",
-        "options": [
-          "Who",
-          "What",
-          "Where",
-          "When"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What does 어디 mean?",
-        "options": [
-          "Who",
-          "What",
-          "Where",
-          "When"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "What does 언제 mean?",
-        "options": [
-          "Who",
-          "What",
-          "Where",
-          "When"
-        ],
-        "correct": 3
-      },
-      {
-        "question": "How many number systems does Korean have?",
-        "options": [
-          "One",
-          "Two",
-          "Three",
-          "Four"
-        ],
-        "correct": 1
-      }
+      {"question": "What is the basic sentence structure in Korean?", "options": ["SVO", "SOV", "VSO", "VOS"], "correct": 1},
+      {"question": "Which particle is used for the subject?", "options": ["을/를", "이/가", "에", "에서"], "correct": 1},
+      {"question": "Which particle is used for the object?", "options": ["이/가", "을/를", "에", "에서"], "correct": 1},
+      {"question": "What does 에 indicate?", "options": ["Action", "Location", "Time", "Possession"], "correct": 1},
+      {"question": "What does 에서 indicate?", "options": ["Location", "Action place", "Time", "Possession"], "correct": 1},
+      {"question": "How do you say 'and' in Korean?", "options": ["와/과", "이/가", "을/를", "에"], "correct": 0},
+      {"question": "What does 도 mean?", "options": ["Only", "Also/too", "From", "To"], "correct": 1},
+      {"question": "Which particle indicates possession?", "options": ["이/가", "을/를", "의", "에"], "correct": 1},
+      {"question": "What does 한테/에게 indicate?", "options": ["Subject", "Object", "Recipient", "Location"], "correct": 2},
+      {"question": "What does 부터 mean?", "options": ["To", "From", "At", "In"], "correct": 1},
+      {"question": "What does 까지 mean?", "options": ["From", "To/until", "At", "In"], "correct": 1},
+      {"question": "What does 만 mean?", "options": ["And", "Only/just", "Or", "But"], "correct": 1},
+      {"question": "What is the difference between 이/가 and 은/는?", "options": ["No difference", "이/가 subject, 은/는 topic", "이/가 topic, 은/는 subject", "Both are objects"], "correct": 1},
+      {"question": "How do you make a verb negative with 안?", "options": ["After verb", "Before verb", "Replace verb", "Add to end"], "correct": 1},
+      {"question": "What does -지 않다 mean?", "options": ["Positive", "Negative", "Question", "Command"], "correct": 1},
+      {"question": "What does 누구 mean?", "options": ["What", "Where", "Who", "When"], "correct": 2},
+      {"question": "What does 무엇 mean?", "options": ["Who", "What", "Where", "When"], "correct": 1},
+      {"question": "What does 어디 mean?", "options": ["Who", "What", "Where", "When"], "correct": 2},
+      {"question": "What does 언제 mean?", "options": ["Who", "What", "Where", "When"], "correct": 3},
+      {"question": "How many number systems does Korean have?", "options": ["One", "Two", "Three", "Four"], "correct": 1}
     ]
   },
   "intermediate": {
     "lessons": [
-      {
-        "title": "Past Tense -았/었 (과거시제)",
-        "explanation": "Use -았/었 to express past tense. -았 after ㅏ/ㅗ vowels, -었 after other vowels."
-      },
-      {
-        "title": "Future Tense -겠 (미래시제)",
-        "explanation": "Use -겠 to express future tense or intention."
-      },
-      {
-        "title": "Progressive -고 있다 (진행형)",
-        "explanation": "Use -고 있다 to express ongoing actions, like English -ing."
-      },
-      {
-        "title": "Honorifics (존댓말)",
-        "explanation": "Korean has different speech levels for politeness and formality."
-      },
-      {
-        "title": "Formal Speech -습니다/-ㅂ니다",
-        "explanation": "Formal polite ending used in formal situations."
-      },
-      {
-        "title": "Informal Speech -아/어",
-        "explanation": "Informal ending used with close friends or family."
-      },
-      {
-        "title": "Conditional -면 (조건문)",
-        "explanation": "Use -면 to express conditions, meaning 'if' or 'when'."
-      },
-      {
-        "title": "Causative -게 하다 (사동사)",
-        "explanation": "Use -게 하다 to express causation, meaning 'make someone do'."
-      },
-      {
-        "title": "Passive Voice -이/히/리/기 되다 (피동사)",
-        "explanation": "Use -이/히/리/기 되다 to express passive voice."
-      },
-      {
-        "title": "Desire -고 싶다 (희망)",
-        "explanation": "Use -고 싶다 to express desire or want."
-      },
-      {
-        "title": "Ability -을/를 수 있다 (능력)",
-        "explanation": "Use -을/를 수 있다 to express ability or possibility."
-      },
-      {
-        "title": "Permission -도 되다 (허가)",
-        "explanation": "Use -도 되다 to ask for or give permission."
-      },
-      {
-        "title": "Prohibition -면 안 되다 (금지)",
-        "explanation": "Use -면 안 되다 to express prohibition or 'must not'."
-      },
-      {
-        "title": "Obligation -아/어야 하다 (의무)",
-        "explanation": "Use -아/어야 하다 to express obligation or 'must'."
-      },
-      {
-        "title": "Experience -아/어 본 적이 있다 (경험)",
-        "explanation": "Use -아/어 본 적이 있다 to express past experience."
-      },
-      {
-        "title": "Attempt -아/어 보다 (시도)",
-        "explanation": "Use -아/어 보다 to express attempt or 'try to'."
-      },
-      {
-        "title": "Completion -아/어 버리다 (완료)",
-        "explanation": "Use -아/어 버리다 to express completion or regret."
-      },
-      {
-        "title": "Continuation -아/어 가다 (지속)",
-        "explanation": "Use -아/어 가다 to express continuation of action."
-      },
-      {
-        "title": "Result -아/어 놓다 (결과)",
-        "explanation": "Use -아/어 놓다 to express result or state after action."
-      },
-      {
-        "title": "Simultaneous -면서 (동시)",
-        "explanation": "Use -면서 to express simultaneous actions."
-      },
-      {
-        "title": "Purpose -려고 (목적)",
-        "explanation": "Use -려고 to express purpose or intention."
-      },
-      {
-        "title": "Reason -아/어서 (이유)",
-        "explanation": "Use -아/어서 to express reason or cause."
-      },
-      {
-        "title": "Contrast -지만 (대조)",
-        "explanation": "Use -지만 to express contrast or 'but'."
-      },
-      {
-        "title": "Addition -고 (추가)",
-        "explanation": "Use -고 to connect actions or states."
-      },
-      {
-        "title": "Choice -거나 (선택)",
-        "explanation": "Use -거나 to express choice or 'or'."
-      },
-      {
-        "title": "Time -을 때 (시간)",
-        "explanation": "Use -을 때 to express time when something happens."
-      },
-      {
-        "title": "Frequency -마다 (빈도)",
-        "explanation": "Use -마다 to express frequency or 'every'."
-      },
-      {
-        "title": "Duration -동안 (지속시간)",
-        "explanation": "Use -동안 to express duration or 'for'."
-      },
-      {
-        "title": "Sequence -고 나서 (순서)",
-        "explanation": "Use -고 나서 to express sequence or 'after doing'."
-      },
-      {
-        "title": "Condition -아/어야 (조건)",
-        "explanation": "Use -아/어야 to express condition or 'only if'."
-      }
+      {"title": "Past Tense -았/었 (과거시제)", "explanation": "Use -았/었 to express past tense. -았 after ㅏ/ㅗ vowels, -었 after other vowels."},
+      {"title": "Future Tense -겠 (미래시제)", "explanation": "Use -겠 to express future tense or intention."},
+      {"title": "Progressive -고 있다 (진행형)", "explanation": "Use -고 있다 to express ongoing actions, like English -ing."},
+      {"title": "Honorifics (존댓말)", "explanation": "Korean has different speech levels for politeness and formality."},
+      {"title": "Formal Speech -습니다/-ㅂ니다", "explanation": "Formal polite ending used in formal situations."},
+      {"title": "Informal Speech -아/어", "explanation": "Informal ending used with close friends or family."},
+      {"title": "Conditional -면 (조건문)", "explanation": "Use -면 to express conditions, meaning 'if' or 'when'."},
+      {"title": "Causative -게 하다 (사동사)", "explanation": "Use -게 하다 to express causation, meaning 'make someone do'."},
+      {"title": "Passive Voice -이/히/리/기 되다 (피동사)", "explanation": "Use -이/히/리/기 되다 to express passive voice."},
+      {"title": "Desire -고 싶다 (희망)", "explanation": "Use -고 싶다 to express desire or want."},
+      {"title": "Ability -을/를 수 있다 (능력)", "explanation": "Use -을/를 수 있다 to express ability or possibility."},
+      {"title": "Permission -도 되다 (허가)", "explanation": "Use -도 되다 to ask for or give permission."},
+      {"title": "Prohibition -면 안 되다 (금지)", "explanation": "Use -면 안 되다 to express prohibition or 'must not'."},
+      {"title": "Obligation -아/어야 하다 (의무)", "explanation": "Use -아/어야 하다 to express obligation or 'must'."},
+      {"title": "Experience -아/어 본 적이 있다 (경험)", "explanation": "Use -아/어 본 적이 있다 to express past experience."},
+      {"title": "Attempt -아/어 보다 (시도)", "explanation": "Use -아/어 보다 to express attempt or 'try to'."},
+      {"title": "Completion -아/어 버리다 (완료)", "explanation": "Use -아/어 버리다 to express completion or regret."},
+      {"title": "Continuation -아/어 가다 (지속)", "explanation": "Use -아/어 가다 to express continuation of action."},
+      {"title": "Result -아/어 놓다 (결과)", "explanation": "Use -아/어 놓다 to express result or state after action."},
+      {"title": "Simultaneous -면서 (동시)", "explanation": "Use -면서 to express simultaneous actions."},
+      {"title": "Purpose -려고 (목적)", "explanation": "Use -려고 to express purpose or intention."},
+      {"title": "Reason -아/어서 (이유)", "explanation": "Use -아/어서 to express reason or cause."},
+      {"title": "Contrast -지만 (대조)", "explanation": "Use -지만 to express contrast or 'but'."},
+      {"title": "Addition -고 (추가)", "explanation": "Use -고 to connect actions or states."},
+      {"title": "Choice -거나 (선택)", "explanation": "Use -거나 to express choice or 'or'."},
+      {"title": "Time -을 때 (시간)", "explanation": "Use -을 때 to express time when something happens."},
+      {"title": "Frequency -마다 (빈도)", "explanation": "Use -마다 to express frequency or 'every'."},
+      {"title": "Duration -동안 (지속시간)", "explanation": "Use -동안 to express duration or 'for'."},
+      {"title": "Sequence -고 나서 (순서)", "explanation": "Use -고 나서 to express sequence or 'after doing'."},
+      {"title": "Condition -아/어야 (조건)", "explanation": "Use -아/어야 to express condition or 'only if'."}
     ],
     "practice": [
-      {
-        "question": "How do you make past tense in Korean?",
-        "options": [
-          "-겠",
-          "-았/었",
-          "-고",
-          "-는데"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What is the future tense marker?",
-        "options": [
-          "-았/었",
-          "-겠",
-          "-고",
-          "-는데"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you express ongoing actions?",
-        "options": [
-          "-고 있다",
-          "-겠",
-          "-았/었",
-          "-고"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are honorifics used for?",
-        "options": [
-          "Speed",
-          "Politeness",
-          "Clarity",
-          "Beauty"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Which ending is most formal?",
-        "options": [
-          "-아/어",
-          "-습니다/-ㅂ니다",
-          "-고",
-          "-는데"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Which ending is most informal?",
-        "options": [
-          "-습니다/-ㅂ니다",
-          "-아/어",
-          "-고",
-          "-는데"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Which ending expresses condition?",
-        "options": [
-          "-겠",
-          "-면",
-          "-고",
-          "-는데"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you express causation?",
-        "options": [
-          "-게 하다",
-          "-이/히/리/기 되다",
-          "-고 싶다",
-          "-아/어서"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "How do you express passive voice?",
-        "options": [
-          "-게 하다",
-          "-이/히/리/기 되다",
-          "-고 싶다",
-          "-아/어서"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you express desire?",
-        "options": [
-          "-게 하다",
-          "-이/히/리/기 되다",
-          "-고 싶다",
-          "-아/어서"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "How do you express ability?",
-        "options": [
-          "-을/를 수 있다",
-          "-도 되다",
-          "-면 안 되다",
-          "-아/어야 하다"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "How do you ask for permission?",
-        "options": [
-          "-을/를 수 있다",
-          "-도 되다",
-          "-면 안 되다",
-          "-아/어야 하다"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you express prohibition?",
-        "options": [
-          "-을/를 수 있다",
-          "-도 되다",
-          "-면 안 되다",
-          "-아/어야 하다"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "How do you express obligation?",
-        "options": [
-          "-을/를 수 있다",
-          "-도 되다",
-          "-면 안 되다",
-          "-아/어야 하다"
-        ],
-        "correct": 3
-      },
-      {
-        "question": "How do you express past experience?",
-        "options": [
-          "-아/어 본 적이 있다",
-          "-아/어 보다",
-          "-아/어 버리다",
-          "-아/어 가다"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "How do you express attempt?",
-        "options": [
-          "-아/어 본 적이 있다",
-          "-아/어 보다",
-          "-아/어 버리다",
-          "-아/어 가다"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you express completion?",
-        "options": [
-          "-아/어 본 적이 있다",
-          "-아/어 보다",
-          "-아/어 버리다",
-          "-아/어 가다"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "How do you express continuation?",
-        "options": [
-          "-아/어 본 적이 있다",
-          "-아/어 보다",
-          "-아/어 버리다",
-          "-아/어 가다"
-        ],
-        "correct": 3
-      },
-      {
-        "question": "How do you express simultaneous actions?",
-        "options": [
-          "-면서",
-          "-려고",
-          "-아/어서",
-          "-지만"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "How do you express purpose?",
-        "options": [
-          "-면서",
-          "-려고",
-          "-아/어서",
-          "-지만"
-        ],
-        "correct": 1
-      }
+      {"question": "How do you make past tense in Korean?", "options": ["-겠", "-았/었", "-고", "-는데"], "correct": 1},
+      {"question": "What is the future tense marker?", "options": ["-았/었", "-겠", "-고", "-는데"], "correct": 1},
+      {"question": "How do you express ongoing actions?", "options": ["-고 있다", "-겠", "-았/었", "-고"], "correct": 0},
+      {"question": "What are honorifics used for?", "options": ["Speed", "Politeness", "Clarity", "Beauty"], "correct": 1},
+      {"question": "Which ending is most formal?", "options": ["-아/어", "-습니다/-ㅂ니다", "-고", "-는데"], "correct": 1},
+      {"question": "Which ending is most informal?", "options": ["-습니다/-ㅂ니다", "-아/어", "-고", "-는데"], "correct": 1},
+      {"question": "Which ending expresses condition?", "options": ["-겠", "-면", "-고", "-는데"], "correct": 1},
+      {"question": "How do you express causation?", "options": ["-게 하다", "-이/히/리/기 되다", "-고 싶다", "-아/어서"], "correct": 0},
+      {"question": "How do you express passive voice?", "options": ["-게 하다", "-이/히/리/기 되다", "-고 싶다", "-아/어서"], "correct": 1},
+      {"question": "How do you express desire?", "options": ["-게 하다", "-이/히/리/기 되다", "-고 싶다", "-아/어서"], "correct": 2},
+      {"question": "How do you express ability?", "options": ["-을/를 수 있다", "-도 되다", "-면 안 되다", "-아/어야 하다"], "correct": 0},
+      {"question": "How do you ask for permission?", "options": ["-을/를 수 있다", "-도 되다", "-면 안 되다", "-아/어야 하다"], "correct": 1},
+      {"question": "How do you express prohibition?", "options": ["-을/를 수 있다", "-도 되다", "-면 안 되다", "-아/어야 하다"], "correct": 2},
+      {"question": "How do you express obligation?", "options": ["-을/를 수 있다", "-도 되다", "-면 안 되다", "-아/어야 하다"], "correct": 3},
+      {"question": "How do you express past experience?", "options": ["-아/어 본 적이 있다", "-아/어 보다", "-아/어 버리다", "-아/어 가다"], "correct": 0},
+      {"question": "How do you express attempt?", "options": ["-아/어 본 적이 있다", "-아/어 보다", "-아/어 버리다", "-아/어 가다"], "correct": 1},
+      {"question": "How do you express completion?", "options": ["-아/어 본 적이 있다", "-아/어 보다", "-아/어 버리다", "-아/어 가다"], "correct": 2},
+      {"question": "How do you express continuation?", "options": ["-아/어 본 적이 있다", "-아/어 보다", "-아/어 버리다", "-아/어 가다"], "correct": 3},
+      {"question": "How do you express simultaneous actions?", "options": ["-면서", "-려고", "-아/어서", "-지만"], "correct": 0},
+      {"question": "How do you express purpose?", "options": ["-면서", "-려고", "-아/어서", "-지만"], "correct": 1}
     ],
     "quiz": [
-      {
-        "question": "What is the past tense marker in Korean?",
-        "options": [
-          "-겠",
-          "-았/었",
-          "-고",
-          "-는데"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What is the future tense marker in Korean?",
-        "options": [
-          "-았/었",
-          "-겠",
-          "-고",
-          "-는데"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you express ongoing actions in Korean?",
-        "options": [
-          "-고 있다",
-          "-겠",
-          "-았/었",
-          "-고"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are honorifics used for in Korean?",
-        "options": [
-          "Speed",
-          "Politeness",
-          "Clarity",
-          "Beauty"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Which ending is most formal in Korean?",
-        "options": [
-          "-아/어",
-          "-습니다/-ㅂ니다",
-          "-고",
-          "-는데"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Which ending is most informal in Korean?",
-        "options": [
-          "-습니다/-ㅂ니다",
-          "-아/어",
-          "-고",
-          "-는데"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "Which ending expresses condition in Korean?",
-        "options": [
-          "-겠",
-          "-면",
-          "-고",
-          "-는데"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you express causation in Korean?",
-        "options": [
-          "-게 하다",
-          "-이/히/리/기 되다",
-          "-고 싶다",
-          "-아/어서"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "How do you express passive voice in Korean?",
-        "options": [
-          "-게 하다",
-          "-이/히/리/기 되다",
-          "-고 싶다",
-          "-아/어서"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you express desire in Korean?",
-        "options": [
-          "-게 하다",
-          "-이/히/리/기 되다",
-          "-고 싶다",
-          "-아/어서"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "How do you express ability in Korean?",
-        "options": [
-          "-을/를 수 있다",
-          "-도 되다",
-          "-면 안 되다",
-          "-아/어야 하다"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "How do you ask for permission in Korean?",
-        "options": [
-          "-을/를 수 있다",
-          "-도 되다",
-          "-면 안 되다",
-          "-아/어야 하다"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you express prohibition in Korean?",
-        "options": [
-          "-을/를 수 있다",
-          "-도 되다",
-          "-면 안 되다",
-          "-아/어야 하다"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "How do you express obligation in Korean?",
-        "options": [
-          "-을/를 수 있다",
-          "-도 되다",
-          "-면 안 되다",
-          "-아/어야 하다"
-        ],
-        "correct": 3
-      },
-      {
-        "question": "How do you express past experience in Korean?",
-        "options": [
-          "-아/어 본 적이 있다",
-          "-아/어 보다",
-          "-아/어 버리다",
-          "-아/어 가다"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "How do you express attempt in Korean?",
-        "options": [
-          "-아/어 본 적이 있다",
-          "-아/어 보다",
-          "-아/어 버리다",
-          "-아/어 가다"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you express completion in Korean?",
-        "options": [
-          "-아/어 본 적이 있다",
-          "-아/어 보다",
-          "-아/어 버리다",
-          "-아/어 가다"
-        ],
-        "correct": 2
-      },
-      {
-        "question": "How do you express continuation in Korean?",
-        "options": [
-          "-아/어 본 적이 있다",
-          "-아/어 보다",
-          "-아/어 버리다",
-          "-아/어 가다"
-        ],
-        "correct": 3
-      },
-      {
-        "question": "How do you express simultaneous actions in Korean?",
-        "options": [
-          "-면서",
-          "-려고",
-          "-아/어서",
-          "-지만"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "How do you express purpose in Korean?",
-        "options": [
-          "-면서",
-          "-려고",
-          "-아/어서",
-          "-지만"
-        ],
-        "correct": 1
-      }
+      {"question": "What is the past tense marker in Korean?", "options": ["-겠", "-았/었", "-고", "-는데"], "correct": 1},
+      {"question": "What is the future tense marker in Korean?", "options": ["-았/었", "-겠", "-고", "-는데"], "correct": 1},
+      {"question": "How do you express ongoing actions in Korean?", "options": ["-고 있다", "-겠", "-았/었", "-고"], "correct": 0},
+      {"question": "What are honorifics used for in Korean?", "options": ["Speed", "Politeness", "Clarity", "Beauty"], "correct": 1},
+      {"question": "Which ending is most formal in Korean?", "options": ["-아/어", "-습니다/-ㅂ니다", "-고", "-는데"], "correct": 1},
+      {"question": "Which ending is most informal in Korean?", "options": ["-습니다/-ㅂ니다", "-아/어", "-고", "-는데"], "correct": 1},
+      {"question": "Which ending expresses condition in Korean?", "options": ["-겠", "-면", "-고", "-는데"], "correct": 1},
+      {"question": "How do you express causation in Korean?", "options": ["-게 하다", "-이/히/리/기 되다", "-고 싶다", "-아/어서"], "correct": 0},
+      {"question": "How do you express passive voice in Korean?", "options": ["-게 하다", "-이/히/리/기 되다", "-고 싶다", "-아/어서"], "correct": 1},
+      {"question": "How do you express desire in Korean?", "options": ["-게 하다", "-이/히/리/기 되다", "-고 싶다", "-아/어서"], "correct": 2},
+      {"question": "How do you express ability in Korean?", "options": ["-을/를 수 있다", "-도 되다", "-면 안 되다", "-아/어야 하다"], "correct": 0},
+      {"question": "How do you ask for permission in Korean?", "options": ["-을/를 수 있다", "-도 되다", "-면 안 되다", "-아/어야 하다"], "correct": 1},
+      {"question": "How do you express prohibition in Korean?", "options": ["-을/를 수 있다", "-도 되다", "-면 안 되다", "-아/어야 하다"], "correct": 2},
+      {"question": "How do you express obligation in Korean?", "options": ["-을/를 수 있다", "-도 되다", "-면 안 되다", "-아/어야 하다"], "correct": 3},
+      {"question": "How do you express past experience in Korean?", "options": ["-아/어 본 적이 있다", "-아/어 보다", "-아/어 버리다", "-아/어 가다"], "correct": 0},
+      {"question": "How do you express attempt in Korean?", "options": ["-아/어 본 적이 있다", "-아/어 보다", "-아/어 버리다", "-아/어 가다"], "correct": 1},
+      {"question": "How do you express completion in Korean?", "options": ["-아/어 본 적이 있다", "-아/어 보다", "-아/어 버리다", "-아/어 가다"], "correct": 2},
+      {"question": "How do you express continuation in Korean?", "options": ["-아/어 본 적이 있다", "-아/어 보다", "-아/어 버리다", "-아/어 가다"], "correct": 3},
+      {"question": "How do you express simultaneous actions in Korean?", "options": ["-면서", "-려고", "-아/어서", "-지만"], "correct": 0},
+      {"question": "How do you express purpose in Korean?", "options": ["-면서", "-려고", "-아/어서", "-지만"], "correct": 1}
     ]
   },
   "advanced": {
     "lessons": [
-      {
-        "title": "Subjunctive Mood (가정법)",
-        "explanation": "Express hypothetical situations and wishes using -았/었으면, -면 좋겠다."
-      },
-      {
-        "title": "Complex Causative (복합 사동)",
-        "explanation": "Advanced causative constructions with multiple levels of causation."
-      },
-      {
-        "title": "Literary Style (문어체)",
-        "explanation": "Formal written style used in literature and formal documents."
-      },
-      {
-        "title": "Historical Present (역사적 현재)",
-        "explanation": "Using present tense to describe past events for dramatic effect."
-      },
-      {
-        "title": "Indirect Speech (간접화법)",
-        "explanation": "Reporting speech indirectly using -라고, -다고, -자고 constructions."
-      },
-      {
-        "title": "Conditional Chains (조건문 연결)",
-        "explanation": "Complex conditional sentences with multiple conditions and results."
-      },
-      {
-        "title": "Temporal Clauses (시간절)",
-        "explanation": "Complex time expressions and temporal relationships."
-      },
-      {
-        "title": "Causal Chains (인과관계)",
-        "explanation": "Expressing complex cause-and-effect relationships."
-      },
-      {
-        "title": "Concessive Clauses (양보절)",
-        "explanation": "Expressing concession using -더라도, -아/어도 constructions."
-      },
-      {
-        "title": "Purpose Clauses (목적절)",
-        "explanation": "Expressing purpose using -도록, -게 하다 constructions."
-      },
-      {
-        "title": "Result Clauses (결과절)",
-        "explanation": "Expressing results using -아/어서, -기에 constructions."
-      },
-      {
-        "title": "Manner Clauses (방식절)",
-        "explanation": "Expressing manner using -듯이, -처럼 constructions."
-      },
-      {
-        "title": "Degree Clauses (정도절)",
-        "explanation": "Expressing degree using -만큼, -정도 constructions."
-      },
-      {
-        "title": "Comparison Clauses (비교절)",
-        "explanation": "Complex comparison structures using -보다, -만큼 constructions."
-      },
-      {
-        "title": "Exception Clauses (예외절)",
-        "explanation": "Expressing exceptions using -을/를 제외하고, -외에 constructions."
-      },
-      {
-        "title": "Addition Clauses (추가절)",
-        "explanation": "Expressing addition using -뿐만 아니라, -게다가 constructions."
-      },
-      {
-        "title": "Contrast Clauses (대조절)",
-        "explanation": "Expressing contrast using -반면에, -하지만 constructions."
-      },
-      {
-        "title": "Emphasis Clauses (강조절)",
-        "explanation": "Expressing emphasis using -은/는커녕, -조차 constructions."
-      },
-      {
-        "title": "Limitation Clauses (제한절)",
-        "explanation": "Expressing limitation using -에 한정하여, -에 불과하다 constructions."
-      },
-      {
-        "title": "Possibility Clauses (가능성절)",
-        "explanation": "Expressing possibility using -을/를 수 있다, -가능하다 constructions."
-      },
-      {
-        "title": "Probability Clauses (확률절)",
-        "explanation": "Expressing probability using -을 것 같다, -을 리가 있다 constructions."
-      },
-      {
-        "title": "Certainty Clauses (확실성절)",
-        "explanation": "Expressing certainty using -을 것이다, -을 수밖에 없다 constructions."
-      },
-      {
-        "title": "Doubt Clauses (의심절)",
-        "explanation": "Expressing doubt using -을까, -을지 모르다 constructions."
-      },
-      {
-        "title": "Wish Clauses (소망절)",
-        "explanation": "Expressing wishes using -았/었으면, -면 좋겠다 constructions."
-      },
-      {
-        "title": "Regret Clauses (후회절)",
-        "explanation": "Expressing regret using -았/었더라면, -았/었으면 좋았을 텐데 constructions."
-      },
-      {
-        "title": "Surprise Clauses (놀람절)",
-        "explanation": "Expressing surprise using -다니, -다니요 constructions."
-      },
-      {
-        "title": "Disappointment Clauses (실망절)",
-        "explanation": "Expressing disappointment using -다니 실망이다, -다니 아쉽다 constructions."
-      },
-      {
-        "title": "Satisfaction Clauses (만족절)",
-        "explanation": "Expressing satisfaction using -다니 다행이다, -다니 기쁘다 constructions."
-      },
-      {
-        "title": "Worry Clauses (걱정절)",
-        "explanation": "Expressing worry using -을까 걱정이다, -을까 우려된다 constructions."
-      },
-      {
-        "title": "Hope Clauses (희망절)",
-        "explanation": "Expressing hope using -기를 바란다, -기를 희망한다 constructions."
-      }
+      {"title": "Subjunctive Mood (가정법)", "explanation": "Express hypothetical situations and wishes using -았/었으면, -면 좋겠다."},
+      {"title": "Complex Causative (복합 사동)", "explanation": "Advanced causative constructions with multiple levels of causation."},
+      {"title": "Literary Style (문어체)", "explanation": "Formal written style used in literature and formal documents."},
+      {"title": "Historical Present (역사적 현재)", "explanation": "Using present tense to describe past events for dramatic effect."},
+      {"title": "Indirect Speech (간접화법)", "explanation": "Reporting speech indirectly using -라고, -다고, -자고 constructions."},
+      {"title": "Conditional Chains (조건문 연결)", "explanation": "Complex conditional sentences with multiple conditions and results."},
+      {"title": "Temporal Clauses (시간절)", "explanation": "Complex time expressions and temporal relationships."},
+      {"title": "Causal Chains (인과관계)", "explanation": "Expressing complex cause-and-effect relationships."},
+      {"title": "Concessive Clauses (양보절)", "explanation": "Expressing concession using -더라도, -아/어도 constructions."},
+      {"title": "Purpose Clauses (목적절)", "explanation": "Expressing purpose using -도록, -게 하다 constructions."},
+      {"title": "Result Clauses (결과절)", "explanation": "Expressing results using -아/어서, -기에 constructions."},
+      {"title": "Manner Clauses (방식절)", "explanation": "Expressing manner using -듯이, -처럼 constructions."},
+      {"title": "Degree Clauses (정도절)", "explanation": "Expressing degree using -만큼, -정도 constructions."},
+      {"title": "Comparison Clauses (비교절)", "explanation": "Complex comparison structures using -보다, -만큼 constructions."},
+      {"title": "Exception Clauses (예외절)", "explanation": "Expressing exceptions using -을/를 제외하고, -외에 constructions."},
+      {"title": "Addition Clauses (추가절)", "explanation": "Expressing addition using -뿐만 아니라, -게다가 constructions."},
+      {"title": "Contrast Clauses (대조절)", "explanation": "Expressing contrast using -반면에, -하지만 constructions."},
+      {"title": "Emphasis Clauses (강조절)", "explanation": "Expressing emphasis using -은/는커녕, -조차 constructions."},
+      {"title": "Limitation Clauses (제한절)", "explanation": "Expressing limitation using -에 한정하여, -에 불과하다 constructions."},
+      {"title": "Possibility Clauses (가능성절)", "explanation": "Expressing possibility using -을/를 수 있다, -가능하다 constructions."},
+      {"title": "Probability Clauses (확률절)", "explanation": "Expressing probability using -을 것 같다, -을 리가 있다 constructions."},
+      {"title": "Certainty Clauses (확실성절)", "explanation": "Expressing certainty using -을 것이다, -을 수밖에 없다 constructions."},
+      {"title": "Doubt Clauses (의심절)", "explanation": "Expressing doubt using -을까, -을지 모르다 constructions."},
+      {"title": "Wish Clauses (소망절)", "explanation": "Expressing wishes using -았/었으면, -면 좋겠다 constructions."},
+      {"title": "Regret Clauses (후회절)", "explanation": "Expressing regret using -았/었더라면, -았/었으면 좋았을 텐데 constructions."},
+      {"title": "Surprise Clauses (놀람절)", "explanation": "Expressing surprise using -다니, -다니요 constructions."},
+      {"title": "Disappointment Clauses (실망절)", "explanation": "Expressing disappointment using -다니 실망이다, -다니 아쉽다 constructions."},
+      {"title": "Satisfaction Clauses (만족절)", "explanation": "Expressing satisfaction using -다니 다행이다, -다니 기쁘다 constructions."},
+      {"title": "Worry Clauses (걱정절)", "explanation": "Expressing worry using -을까 걱정이다, -을까 우려된다 constructions."},
+      {"title": "Hope Clauses (희망절)", "explanation": "Expressing hope using -기를 바란다, -기를 희망한다 constructions."}
     ],
     "practice": [
-      {
-        "question": "How do you express hypothetical situations in Korean?",
-        "options": [
-          "-았/었으면",
-          "-면 좋겠다",
-          "-았/었더라면",
-          "All of the above"
-        ],
-        "correct": 3
-      },
-      {
-        "question": "What is literary style used for?",
-        "options": [
-          "Casual conversation",
-          "Formal writing",
-          "Texting",
-          "Singing"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What is historical present used for?",
-        "options": [
-          "Future events",
-          "Past events dramatically",
-          "Present events",
-          "Hypothetical events"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you report speech indirectly?",
-        "options": [
-          "-라고",
-          "-다고",
-          "-자고",
-          "All of the above"
-        ],
-        "correct": 3
-      },
-      {
-        "question": "What are conditional chains used for?",
-        "options": [
-          "Simple conditions",
-          "Complex conditions",
-          "Questions",
-          "Commands"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What are temporal clauses used for?",
-        "options": [
-          "Time expressions",
-          "Place expressions",
-          "Person expressions",
-          "Thing expressions"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are causal chains used for?",
-        "options": [
-          "Cause and effect",
-          "Time and place",
-          "Person and thing",
-          "Question and answer"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are concessive clauses used for?",
-        "options": [
-          "Concession",
-          "Condition",
-          "Question",
-          "Command"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are purpose clauses used for?",
-        "options": [
-          "Purpose",
-          "Result",
-          "Condition",
-          "Question"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are result clauses used for?",
-        "options": [
-          "Result",
-          "Purpose",
-          "Condition",
-          "Question"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are manner clauses used for?",
-        "options": [
-          "Manner",
-          "Time",
-          "Place",
-          "Person"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are degree clauses used for?",
-        "options": [
-          "Degree",
-          "Time",
-          "Place",
-          "Person"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are comparison clauses used for?",
-        "options": [
-          "Comparison",
-          "Time",
-          "Place",
-          "Person"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are exception clauses used for?",
-        "options": [
-          "Exception",
-          "Rule",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are addition clauses used for?",
-        "options": [
-          "Addition",
-          "Subtraction",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are contrast clauses used for?",
-        "options": [
-          "Contrast",
-          "Similarity",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are emphasis clauses used for?",
-        "options": [
-          "Emphasis",
-          "Weakness",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are limitation clauses used for?",
-        "options": [
-          "Limitation",
-          "Expansion",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are possibility clauses used for?",
-        "options": [
-          "Possibility",
-          "Impossibility",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are probability clauses used for?",
-        "options": [
-          "Probability",
-          "Improbability",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      }
+      {"question": "How do you express hypothetical situations in Korean?", "options": ["-았/었으면", "-면 좋겠다", "-았/었더라면", "All of the above"], "correct": 3},
+      {"question": "What is literary style used for?", "options": ["Casual conversation", "Formal writing", "Texting", "Singing"], "correct": 1},
+      {"question": "What is historical present used for?", "options": ["Future events", "Past events dramatically", "Present events", "Hypothetical events"], "correct": 1},
+      {"question": "How do you report speech indirectly?", "options": ["-라고", "-다고", "-자고", "All of the above"], "correct": 3},
+      {"question": "What are conditional chains used for?", "options": ["Simple conditions", "Complex conditions", "Questions", "Commands"], "correct": 1},
+      {"question": "What are temporal clauses used for?", "options": ["Time expressions", "Place expressions", "Person expressions", "Thing expressions"], "correct": 0},
+      {"question": "What are causal chains used for?", "options": ["Cause and effect", "Time and place", "Person and thing", "Question and answer"], "correct": 0},
+      {"question": "What are concessive clauses used for?", "options": ["Concession", "Condition", "Question", "Command"], "correct": 0},
+      {"question": "What are purpose clauses used for?", "options": ["Purpose", "Result", "Condition", "Question"], "correct": 0},
+      {"question": "What are result clauses used for?", "options": ["Result", "Purpose", "Condition", "Question"], "correct": 0},
+      {"question": "What are manner clauses used for?", "options": ["Manner", "Time", "Place", "Person"], "correct": 0},
+      {"question": "What are degree clauses used for?", "options": ["Degree", "Time", "Place", "Person"], "correct": 0},
+      {"question": "What are comparison clauses used for?", "options": ["Comparison", "Time", "Place", "Person"], "correct": 0},
+      {"question": "What are exception clauses used for?", "options": ["Exception", "Rule", "Time", "Place"], "correct": 0},
+      {"question": "What are addition clauses used for?", "options": ["Addition", "Subtraction", "Time", "Place"], "correct": 0},
+      {"question": "What are contrast clauses used for?", "options": ["Contrast", "Similarity", "Time", "Place"], "correct": 0},
+      {"question": "What are emphasis clauses used for?", "options": ["Emphasis", "Weakness", "Time", "Place"], "correct": 0},
+      {"question": "What are limitation clauses used for?", "options": ["Limitation", "Expansion", "Time", "Place"], "correct": 0},
+      {"question": "What are possibility clauses used for?", "options": ["Possibility", "Impossibility", "Time", "Place"], "correct": 0},
+      {"question": "What are probability clauses used for?", "options": ["Probability", "Improbability", "Time", "Place"], "correct": 0}
     ],
     "quiz": [
-      {
-        "question": "How do you express hypothetical situations in Korean?",
-        "options": [
-          "-았/었으면",
-          "-면 좋겠다",
-          "-았/었더라면",
-          "All of the above"
-        ],
-        "correct": 3
-      },
-      {
-        "question": "What is literary style used for in Korean?",
-        "options": [
-          "Casual conversation",
-          "Formal writing",
-          "Texting",
-          "Singing"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What is historical present used for in Korean?",
-        "options": [
-          "Future events",
-          "Past events dramatically",
-          "Present events",
-          "Hypothetical events"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "How do you report speech indirectly in Korean?",
-        "options": [
-          "-라고",
-          "-다고",
-          "-자고",
-          "All of the above"
-        ],
-        "correct": 3
-      },
-      {
-        "question": "What are conditional chains used for in Korean?",
-        "options": [
-          "Simple conditions",
-          "Complex conditions",
-          "Questions",
-          "Commands"
-        ],
-        "correct": 1
-      },
-      {
-        "question": "What are temporal clauses used for in Korean?",
-        "options": [
-          "Time expressions",
-          "Place expressions",
-          "Person expressions",
-          "Thing expressions"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are causal chains used for in Korean?",
-        "options": [
-          "Cause and effect",
-          "Time and place",
-          "Person and thing",
-          "Question and answer"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are concessive clauses used for in Korean?",
-        "options": [
-          "Concession",
-          "Condition",
-          "Question",
-          "Command"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are purpose clauses used for in Korean?",
-        "options": [
-          "Purpose",
-          "Result",
-          "Condition",
-          "Question"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are result clauses used for in Korean?",
-        "options": [
-          "Result",
-          "Purpose",
-          "Condition",
-          "Question"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are manner clauses used for in Korean?",
-        "options": [
-          "Manner",
-          "Time",
-          "Place",
-          "Person"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are degree clauses used for in Korean?",
-        "options": [
-          "Degree",
-          "Time",
-          "Place",
-          "Person"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are comparison clauses used for in Korean?",
-        "options": [
-          "Comparison",
-          "Time",
-          "Place",
-          "Person"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are exception clauses used for in Korean?",
-        "options": [
-          "Exception",
-          "Rule",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are addition clauses used for in Korean?",
-        "options": [
-          "Addition",
-          "Subtraction",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are contrast clauses used for in Korean?",
-        "options": [
-          "Contrast",
-          "Similarity",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are emphasis clauses used for in Korean?",
-        "options": [
-          "Emphasis",
-          "Weakness",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are limitation clauses used for in Korean?",
-        "options": [
-          "Limitation",
-          "Expansion",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are possibility clauses used for in Korean?",
-        "options": [
-          "Possibility",
-          "Impossibility",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      },
-      {
-        "question": "What are probability clauses used for in Korean?",
-        "options": [
-          "Probability",
-          "Improbability",
-          "Time",
-          "Place"
-        ],
-        "correct": 0
-      }
+      {"question": "How do you express hypothetical situations in Korean?", "options": ["-았/었으면", "-면 좋겠다", "-았/었더라면", "All of the above"], "correct": 3},
+      {"question": "What is literary style used for in Korean?", "options": ["Casual conversation", "Formal writing", "Texting", "Singing"], "correct": 1},
+      {"question": "What is historical present used for in Korean?", "options": ["Future events", "Past events dramatically", "Present events", "Hypothetical events"], "correct": 1},
+      {"question": "How do you report speech indirectly in Korean?", "options": ["-라고", "-다고", "-자고", "All of the above"], "correct": 3},
+      {"question": "What are conditional chains used for in Korean?", "options": ["Simple conditions", "Complex conditions", "Questions", "Commands"], "correct": 1},
+      {"question": "What are temporal clauses used for in Korean?", "options": ["Time expressions", "Place expressions", "Person expressions", "Thing expressions"], "correct": 0},
+      {"question": "What are causal chains used for in Korean?", "options": ["Cause and effect", "Time and place", "Person and thing", "Question and answer"], "correct": 0},
+      {"question": "What are concessive clauses used for in Korean?", "options": ["Concession", "Condition", "Question", "Command"], "correct": 0},
+      {"question": "What are purpose clauses used for in Korean?", "options": ["Purpose", "Result", "Condition", "Question"], "correct": 0},
+      {"question": "What are result clauses used for in Korean?", "options": ["Result", "Purpose", "Condition", "Question"], "correct": 0},
+      {"question": "What are manner clauses used for in Korean?", "options": ["Manner", "Time", "Place", "Person"], "correct": 0},
+      {"question": "What are degree clauses used for in Korean?", "options": ["Degree", "Time", "Place", "Person"], "correct": 0},
+      {"question": "What are comparison clauses used for in Korean?", "options": ["Comparison", "Time", "Place", "Person"], "correct": 0},
+      {"question": "What are exception clauses used for in Korean?", "options": ["Exception", "Rule", "Time", "Place"], "correct": 0},
+      {"question": "What are addition clauses used for in Korean?", "options": ["Addition", "Subtraction", "Time", "Place"], "correct": 0},
+      {"question": "What are contrast clauses used for in Korean?", "options": ["Contrast", "Similarity", "Time", "Place"], "correct": 0},
+      {"question": "What are emphasis clauses used for in Korean?", "options": ["Emphasis", "Weakness", "Time", "Place"], "correct": 0},
+      {"question": "What are limitation clauses used for in Korean?", "options": ["Limitation", "Expansion", "Time", "Place"], "correct": 0},
+      {"question": "What are possibility clauses used for in Korean?", "options": ["Possibility", "Impossibility", "Time", "Place"], "correct": 0},
+      {"question": "What are probability clauses used for in Korean?", "options": ["Probability", "Improbability", "Time", "Place"], "correct": 0}
     ]
   }
 };
 
 
+// ===== EXPORTS =====
+export { vocabularyData, grammarData };
 
 // ===== STATISTICS =====
-console.log('Vocabulary Categories:', Object.keys(vocabularyData).length);
-console.log('Total Words:', 862);
-for (const [category, words] of Object.entries(vocabularyData)) {
-    console.log(`${category}: ${words.length} words`);
-}
-
-for (const [level, data] of Object.entries(grammarData)) {
-    console.log(`${level}: ${data.lessons.length} lessons, ${data.practice.length} practice, ${data.quiz.length} quiz`);
-}
+// Statistics removed to prevent console errors
