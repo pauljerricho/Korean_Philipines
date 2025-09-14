@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇰🇷 Korean Learning App 🇵🇭</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .app-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .app-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #6c757d;
+        }
+
+        .nav-tab.active {
+            background: white;
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+        }
+
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 2rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Category Selection */
+        .category-selection {
+            margin-bottom: 2rem;
+        }
+
+        .category-selection h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .category-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .category-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        }
+
+        /* Word Card */
+        .word-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .word-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .korean-word {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .romanization {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .translations {
+            margin-bottom: 2rem;
+        }
+
+        .translation {
+            margin-bottom: 0.8rem;
+            padding: 0.8rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .language {
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .word-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .play-btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+        }
+
+        .learn-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .learn-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(240, 147, 251, 0.4);
+        }
+
+        .learn-btn.learned {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+        }
+
+        /* Navigation Buttons */
+        .word-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .prev-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        /* Word Counter */
+        .word-counter {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Grammar Styles */
+        .grammar-container {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grammar-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+
+        .grammar-section h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+
+        .level-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .level-btn {
+            background: #e9ecef;
+            color: #6c757d;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .level-btn.active {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+        }
+
+        .level-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .lesson-item {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+
+        .lesson-item h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-item p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .practice-question {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .options {
+            display: grid;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .option-btn {
+            background: #f8f9fa;
+            color: #333;
+            border: 2px solid #e9ecef;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .option-btn:hover {
+            background: #e9ecef;
+            border-color: #007bff;
+        }
+
+        .option-btn.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .option-btn.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .quiz-info {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            border: 2px dashed #bdc3c7;
+        }
+
+        .quiz-start-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .app-container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .category-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .word-actions {
+                flex-direction: column;
+            }
+            
+            .word-navigation {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1 class="app-title">🇰🇷 Korean Learning App 🇵🇭</h1>
+            <p class="app-subtitle">Learn Korean with Filipino translations</p>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="vocabulary">Vocabulary</button>
+            <button class="nav-tab" data-tab="grammar">Grammar</button>
+        </nav>
+
+        <main>
+            <!-- Vocabulary Tab -->
+            <div class="tab-content active" id="vocabulary">
+                <div class="category-selection">
+                    <h3>Select Category</h3>
+                    <div class="category-buttons" id="category-buttons">
+                        <!-- Categories will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="word-card" id="word-card">
+                    <div class="korean-word" id="korean-word">Click a category to start learning!</div>
+                    <div class="romanization" id="romanization"></div>
+                    <div class="translations">
+                        <div class="translation">
+                            <span class="language">🇺🇸 English:</span>
+                            <span class="text" id="english-text">-</span>
+                        </div>
+                        <div class="translation">
+                            <span class="language">🇵🇭 Filipino:</span>
+                            <span class="text" id="filipino-text">-</span>
+                        </div>
+                    </div>
+                    <div class="word-actions">
+                        <button class="play-btn" id="korean-audio">
+                            <i class="fas fa-volume-up"></i> Korean
+                        </button>
+                        <button class="play-btn" id="filipino-audio">
+                            <i class="fas fa-volume-up"></i> Filipino
+                        </button>
+                        <button class="learn-btn" id="learn-btn">
+                            <i class="fas fa-heart"></i> Learn
+                        </button>
+                    </div>
+                    <div class="word-navigation">
+                        <button class="nav-btn prev-btn" id="prev-btn" disabled>
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button class="nav-btn next-btn" id="next-btn" disabled>
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="word-counter" id="word-counter">0 / 0</div>
+                </div>
+            </div>
+
+            <!-- Grammar Tab -->
+            <div class="tab-content" id="grammar">
+                <div class="grammar-container" id="grammar-container">
+                    <div class="grammar-section">
+                        <h3>Select Level</h3>
+                        <div class="level-buttons">
+                            <button class="level-btn active" data-level="beginner">Beginner</button>
+                            <button class="level-btn" data-level="intermediate">Intermediate</button>
+                            <button class="level-btn" data-level="advanced">Advanced</button>
+                        </div>
+                    </div>
+                    <div class="grammar-section">
+                        <h3>Lessons</h3>
+                        <div id="lessons-container">
+                            <!-- Lessons will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="grammar-section">
+                        <h3>Practice</h3>
+                        <div id="practice-container">
+                            <!-- Practice questions will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="grammar-section">
+                        <h3>Quiz</h3>
+                        <div class="quiz-info">
+                            <p>Test your knowledge with grammar questions</p>
+                            <button class="quiz-start-btn" id="quiz-start-btn">Start Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="converted_data.js"></script>
+    <script>
+        // ===== DATA =====
+        // Data will be loaded from converted_data.js
+
+        // ===== GLOBAL VARIABLES =====
+        let currentTab = 'vocabulary';
+        let currentCategory = null;
+        let currentWordIndex = 0;
+        let currentWords = [];
+        let currentGrammarLevel = 'beginner';
+        let learnedWords = JSON.parse(localStorage.getItem('learnedWords')) || [];
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+        });
+
+        function initializeApp() {
+            setupEventListeners();
+            loadCategories();
+            switchTab('vocabulary');
+        }
+
+        // ===== EVENT LISTENERS =====
+        function setupEventListeners() {
+            // Tab switching
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabName = tab.dataset.tab;
+                    switchTab(tabName);
+                });
+            });
+
+            // Category selection
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.category-btn')) {
+                    const category = e.target.closest('.category-btn').dataset.category;
+                    selectCategory(category);
+                }
+            });
+
+            // Word navigation
+            document.getElementById('prev-btn').addEventListener('click', previousWord);
+            document.getElementById('next-btn').addEventListener('click', nextWord);
+
+            // Audio buttons
+            document.getElementById('korean-audio').addEventListener('click', () => {
+                const word = document.getElementById('korean-word').textContent;
+                playAudio(word, 'ko-KR');
+            });
+
+            document.getElementById('filipino-audio').addEventListener('click', () => {
+                const word = document.getElementById('filipino-text').textContent;
+                playAudio(word, 'fil-PH');
+            });
+
+            // Learn button
+            document.getElementById('learn-btn').addEventListener('click', toggleLearned);
+
+            // Grammar level selection
+            document.querySelectorAll('.level-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const level = btn.dataset.level;
+                    selectGrammarLevel(level);
+                });
+            });
+
+            // Practice answer selection
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.option-btn')) {
+                    const btn = e.target.closest('.option-btn');
+                    const isCorrect = btn.dataset.correct === 'true';
+                    checkAnswer(btn, isCorrect);
+                }
+            });
+        }
+
+        // ===== TAB MANAGEMENT =====
+        function switchTab(tabName) {
+            // Update active tab
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+
+            // Update active content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+
+            currentTab = tabName;
+
+            if (tabName === 'grammar') {
+                loadGrammarContent();
+            }
+        }
+
+        // ===== VOCABULARY FUNCTIONS =====
+        function loadCategories() {
+            const categoryButtons = document.getElementById('category-buttons');
+            const categories = Object.keys(vocabularyData);
+            
+            categoryButtons.innerHTML = categories.map(category => `
+                <button class="category-btn" data-category="${category}">
+                    <i class="fas fa-${getCategoryIcon(category)}"></i>
+                    ${category.charAt(0).toUpperCase() + category.slice(1)}
+                </button>
+            `).join('');
+        }
+
+        function getCategoryIcon(category) {
+            const icons = {
+                colors: 'palette',
+                emotions: 'smile',
+                family: 'users',
+                food: 'utensils',
+                numbers: 'calculator',
+                shopping: 'shopping-cart',
+                time: 'clock',
+                weather: 'cloud-sun',
+                animals: 'paw',
+                body: 'user',
+                clothes: 'tshirt',
+                house: 'home',
+                school: 'graduation-cap',
+                transport: 'car',
+                greetings: 'handshake',
+                places: 'map-marker-alt'
+            };
+            return icons[category] || 'book';
+        }
+
+        function selectCategory(category) {
+            // Update active category button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+
+            currentCategory = category;
+            currentWords = vocabularyData[category];
+            currentWordIndex = 0;
+            displayCurrentWord();
+        }
+
+        function displayCurrentWord() {
+            if (currentWords.length === 0) return;
+
+            const word = currentWords[currentWordIndex];
+            
+            document.getElementById('korean-word').textContent = word.korean;
+            document.getElementById('romanization').textContent = word.romanization;
+            document.getElementById('english-text').textContent = word.english;
+            document.getElementById('filipino-text').textContent = word.filipino;
+            
+            // Update word counter
+            document.getElementById('word-counter').textContent = `${currentWordIndex + 1} / ${currentWords.length}`;
+            
+            // Update navigation buttons
+            document.getElementById('prev-btn').disabled = currentWordIndex === 0;
+            document.getElementById('next-btn').disabled = currentWordIndex === currentWords.length - 1;
+            
+            // Update learn button
+            const learnBtn = document.getElementById('learn-btn');
+            const wordKey = `${currentCategory}-${word.korean}`;
+            const isLearned = learnedWords.includes(wordKey);
+            
+            learnBtn.classList.toggle('learned', isLearned);
+            learnBtn.innerHTML = isLearned ? '<i class="fas fa-heart"></i> Learned' : '<i class="fas fa-heart"></i> Learn';
+        }
+
+        function previousWord() {
+            if (currentWords.length === 0) return;
+            currentWordIndex = currentWordIndex > 0 ? currentWordIndex - 1 : currentWords.length - 1;
+            displayCurrentWord();
+        }
+
+        function nextWord() {
+            if (currentWords.length === 0) return;
+            currentWordIndex = (currentWordIndex + 1) % currentWords.length;
+            displayCurrentWord();
+        }
+
+        function playAudio(text, lang) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang;
+                utterance.rate = 0.8;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function toggleLearned() {
+            const word = currentWords[currentWordIndex];
+            const wordKey = `${currentCategory}-${word.korean}`;
+            
+            if (learnedWords.includes(wordKey)) {
+                learnedWords = learnedWords.filter(w => w !== wordKey);
+            } else {
+                learnedWords.push(wordKey);
+            }
+            
+            localStorage.setItem('learnedWords', JSON.stringify(learnedWords));
+            displayCurrentWord();
+        }
+
+        // ===== GRAMMAR FUNCTIONS =====
+        function loadGrammarContent() {
+            const level = currentGrammarLevel;
+            const data = grammarData[level];
+            
+            // Load lessons
+            const lessonsContainer = document.getElementById('lessons-container');
+            lessonsContainer.innerHTML = data.lessons.map(lesson => `
+                <div class="lesson-item">
+                    <h4>${lesson.title}</h4>
+                    <p>${lesson.explanation}</p>
+                </div>
+            `).join('');
+            
+            // Load practice
+            const practiceContainer = document.getElementById('practice-container');
+            practiceContainer.innerHTML = data.practice.map((q, index) => `
+                <div class="practice-question">
+                    <p><strong>Question ${index + 1}:</strong> ${q.question}</p>
+                    <div class="options">
+                        ${q.options.map((option, optIndex) => `
+                            <button class="option-btn" data-correct="${optIndex === q.correct}">
+                                ${option}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+            
+            // Update quiz info
+            const quizInfo = document.querySelector('.quiz-info p');
+            if (quizInfo) {
+                quizInfo.textContent = `Test your knowledge with ${data.quiz.length} questions`;
+            }
+        }
+
+        function selectGrammarLevel(level) {
+            // Update active level button
+            document.querySelectorAll('.level-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-level="${level}"]`).classList.add('active');
+            
+            currentGrammarLevel = level;
+            loadGrammarContent();
+        }
+
+        function checkAnswer(button, isCorrect) {
+            // Disable all options in this question
+            const question = button.closest('.practice-question');
+            question.querySelectorAll('.option-btn').forEach(btn => {
+                btn.disabled = true;
+                if (btn.dataset.correct === 'true') {
+                    btn.classList.add('correct');
+                }
+            });
+            
+            // Mark selected answer
+            button.classList.add(isCorrect ? 'correct' : 'incorrect');
+            
+            // Show feedback
+            const feedback = document.createElement('div');
+            feedback.style.marginTop = '1rem';
+            feedback.style.padding = '0.5rem';
+            feedback.style.borderRadius = '5px';
+            feedback.style.textAlign = 'center';
+            feedback.style.fontWeight = '600';
+            
+            if (isCorrect) {
+                feedback.style.background = '#d4edda';
+                feedback.style.color = '#155724';
+                feedback.textContent = 'Correct! 🎉';
+            } else {
+                feedback.style.background = '#f8d7da';
+                feedback.style.color = '#721c24';
+                feedback.textContent = 'Incorrect. Try again!';
+            }
+            
+            question.appendChild(feedback);
+        }
+    </script>
+</body>
+</html>
