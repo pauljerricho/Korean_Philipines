@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
-import { BookOpen, Globe, GraduationCap } from 'lucide-react'
+import { BookOpen, Globe, GraduationCap, Play, Award } from 'lucide-react'
 import VocabularyTab from './components/VocabularyTab'
 import GrammarTab from './components/GrammarTab'
 import HangulTab from './components/HangulTab'
+import YoutuberTab from './components/YoutuberTab'
+import TopikTab from './components/TopikTab'
 
 // 데이터 import
 import vocabularyData from './data/vocabularyData'
 import grammarData from './data/grammarData'
+import youtuberData from './data/youtuberData'
+import topikData from './data/topikData'
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('hangul')
@@ -14,7 +18,9 @@ const App = () => {
   const tabs = [
     { id: 'hangul', label: 'Hangul', icon: Globe },
     { id: 'vocabulary', label: 'Vocabulary', icon: BookOpen },
-    { id: 'grammar', label: 'Grammar', icon: GraduationCap }
+    { id: 'grammar', label: 'Grammar', icon: GraduationCap },
+    { id: 'topik', label: 'TOPIK', icon: Award },
+    { id: 'youtubers', label: 'YouTubers', icon: Play }
   ]
 
   const getCategoryIcon = (category) => {
@@ -104,6 +110,12 @@ const App = () => {
         )}
         {activeTab === 'grammar' && (
           <GrammarTab grammarData={grammarData} />
+        )}
+        {activeTab === 'topik' && (
+          <TopikTab topikData={topikData} />
+        )}
+        {activeTab === 'youtubers' && (
+          <YoutuberTab youtuberData={youtuberData} />
         )}
       </main>
 
