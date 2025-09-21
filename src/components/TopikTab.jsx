@@ -226,8 +226,25 @@ const TopikTab = ({ topikData }) => {
                         <span className="text-red-600">{problem.options[userAnswer]}</span>
                       </div>
                     )}
-                    <div className="text-gray-600">
-                      {problem.explanation}
+                    <div className="space-y-3">
+                      {problem.explanation && (
+                        <div className="p-3 bg-blue-50 rounded-lg text-sm text-gray-700">
+                          <span className="font-semibold text-blue-800">🇰🇷 한국어 설명:</span><br/>
+                          {problem.explanation}
+                        </div>
+                      )}
+                      {problem.explanationEn && (
+                        <div className="p-3 bg-green-50 rounded-lg text-sm text-gray-700">
+                          <span className="font-semibold text-green-800">🇺🇸 English Explanation:</span><br/>
+                          {problem.explanationEn}
+                        </div>
+                      )}
+                      {problem.explanationFil && (
+                        <div className="p-3 bg-yellow-50 rounded-lg text-sm text-gray-700">
+                          <span className="font-semibold text-yellow-800">🇵🇭 Filipino Explanation:</span><br/>
+                          {problem.explanationFil}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -333,6 +350,31 @@ const TopikTab = ({ topikData }) => {
           </div>
 
           {/* Navigation */}
+          {/* Explanation Section */}
+          {problem.explanation && (
+            <div className="mt-6 space-y-3">
+              <h4 className="text-lg font-semibold text-gray-800 mb-3">📚 해설 (Explanation)</h4>
+              {problem.explanation && (
+                <div className="p-3 bg-blue-50 rounded-lg text-sm text-gray-700">
+                  <span className="font-semibold text-blue-800">🇰🇷 한국어:</span><br/>
+                  {problem.explanation}
+                </div>
+              )}
+              {problem.explanationEn && (
+                <div className="p-3 bg-green-50 rounded-lg text-sm text-gray-700">
+                  <span className="font-semibold text-green-800">🇺🇸 English:</span><br/>
+                  {problem.explanationEn}
+                </div>
+              )}
+              {problem.explanationFil && (
+                <div className="p-3 bg-yellow-50 rounded-lg text-sm text-gray-700">
+                  <span className="font-semibold text-yellow-800">🇵🇭 Filipino:</span><br/>
+                  {problem.explanationFil}
+                </div>
+              )}
+            </div>
+          )}
+
           <div className="flex justify-between">
             <button
               onClick={prevQuestion}
