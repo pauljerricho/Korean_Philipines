@@ -33,7 +33,13 @@ const ParticlesTab = ({ particlesData }) => {
       {/* Header */}
       <div className="bg-white rounded-2xl shadow-lg p-8">
         <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">한국어 조사 (Korean Particles)</h2>
-        <p className="text-lg text-gray-600 text-center">HowToStudyKorean Lesson 12 기반</p>
+        <p className="text-lg text-gray-600 text-center mb-4">Learn Korean particles with detailed explanations in English and Filipino</p>
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg">
+          <p className="text-center text-gray-700">
+            <strong>For Filipino Learners:</strong> This section helps you understand Korean particles (조사) which are essential for Korean grammar. 
+            Each particle has detailed explanations in both Korean and English, plus practical examples with Filipino translations.
+          </p>
+        </div>
       </div>
 
       {/* Particle Card */}
@@ -75,7 +81,24 @@ const ParticlesTab = ({ particlesData }) => {
                 <Lightbulb className="text-yellow-600" size={24} />
                 <h3 className="text-xl font-bold text-yellow-800">설명 (Explanation)</h3>
               </div>
-              <p className="text-lg text-yellow-700">{currentParticle.explanation}</p>
+              <div className="space-y-4">
+                <div className="bg-white p-4 rounded-lg">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <span className="text-2xl">🇰🇷</span>
+                    <span className="font-semibold text-gray-700">Korean:</span>
+                  </div>
+                  <p className="text-lg text-gray-800">{currentParticle.explanation}</p>
+                </div>
+                {currentParticle.explanation_en && (
+                  <div className="bg-white p-4 rounded-lg">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <span className="text-2xl">🇺🇸</span>
+                      <span className="font-semibold text-gray-700">English:</span>
+                    </div>
+                    <p className="text-lg text-gray-800">{currentParticle.explanation_en}</p>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Usage */}
@@ -84,8 +107,53 @@ const ParticlesTab = ({ particlesData }) => {
                 <BookOpen className="text-green-600" size={24} />
                 <h3 className="text-xl font-bold text-green-800">사용법 (Usage)</h3>
               </div>
-              <p className="text-lg text-green-700">{currentParticle.usage}</p>
+              <div className="space-y-4">
+                <div className="bg-white p-4 rounded-lg">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <span className="text-2xl">🇰🇷</span>
+                    <span className="font-semibold text-gray-700">Korean:</span>
+                  </div>
+                  <p className="text-lg text-gray-800">{currentParticle.usage}</p>
+                </div>
+                {currentParticle.usage_en && (
+                  <div className="bg-white p-4 rounded-lg">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <span className="text-2xl">🇺🇸</span>
+                      <span className="font-semibold text-gray-700">English:</span>
+                    </div>
+                    <p className="text-lg text-gray-800">{currentParticle.usage_en}</p>
+                  </div>
+                )}
+              </div>
             </div>
+
+            {/* Tips */}
+            {currentParticle.tips && (
+              <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-xl">
+                <div className="flex items-center space-x-2 mb-3">
+                  <span className="text-2xl">💡</span>
+                  <h3 className="text-xl font-bold text-purple-800">팁 (Tips)</h3>
+                </div>
+                <div className="space-y-4">
+                  <div className="bg-white p-4 rounded-lg">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <span className="text-2xl">🇰🇷</span>
+                      <span className="font-semibold text-gray-700">Korean:</span>
+                    </div>
+                    <p className="text-lg text-gray-800">{currentParticle.tips}</p>
+                  </div>
+                  {currentParticle.tips_en && (
+                    <div className="bg-white p-4 rounded-lg">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <span className="text-2xl">🇺🇸</span>
+                        <span className="font-semibold text-gray-700">English:</span>
+                      </div>
+                      <p className="text-lg text-gray-800">{currentParticle.tips_en}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
 
             {/* Examples Toggle */}
             <div className="text-center">

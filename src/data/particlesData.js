@@ -1,4 +1,4 @@
-// 한국어 조사 데이터 - HowToStudyKorean Lesson 12 참고 + 추가 조사들
+// 한국어 조사 데이터 - Korean Particles for Filipino Learners
 const particlesData = [
   // 기본 격조사들
   {
@@ -6,7 +6,8 @@ const particlesData = [
     romanization: "i/ga",
     english: "subject particle",
     filipino: "paksa (subject)",
-    explanation: "주어를 나타내는 조사",
+    explanation: "주어를 나타내는 조사입니다. 문장에서 '누가' 또는 '무엇이' 행동하는지를 보여줍니다.",
+    explanation_en: "This particle marks the subject of a sentence. It shows 'who' or 'what' is performing the action. In Filipino, this is similar to 'ang' before the subject.",
     examples: [
       {
         korean: "학생이 공부해요",
@@ -19,16 +20,26 @@ const particlesData = [
         romanization: "chin-gu-ga wa-sseo-yo",
         english: "My friend came",
         filipino: "Dumating ang kaibigan ko"
+      },
+      {
+        korean: "고양이가 자요",
+        romanization: "go-yang-i-ga ja-yo",
+        english: "The cat sleeps",
+        filipino: "Natutulog ang pusa"
       }
     ],
-    usage: "자음으로 끝나는 명사에는 '이', 모음으로 끝나는 명사에는 '가'를 붙입니다."
+    usage: "자음으로 끝나는 명사에는 '이', 모음으로 끝나는 명사에는 '가'를 붙입니다.",
+    usage_en: "Use '이' after nouns ending with consonants, and '가' after nouns ending with vowels. This is similar to how Filipino uses 'ang' before the subject.",
+    tips: "이 조사는 문장의 주어를 강조할 때 사용됩니다. '은/는'과 달리 새로운 정보를 소개할 때 주로 사용합니다.",
+    tips_en: "This particle emphasizes the subject and is used when introducing new information, unlike '은/는' which is used for topics."
   },
   {
     korean: "을/를",
     romanization: "eul/reul",
     english: "object particle",
     filipino: "layon (object)",
-    explanation: "목적어를 나타내는 조사",
+    explanation: "목적어를 나타내는 조사입니다. 문장에서 '무엇을' 또는 '누구를' 하는지를 보여줍니다.",
+    explanation_en: "This particle marks the direct object of a sentence. It shows 'what' or 'whom' the action is being done to. In Filipino, this is similar to 'ng' before the object.",
     examples: [
       {
         korean: "책을 읽어요",
@@ -41,16 +52,26 @@ const particlesData = [
         romanization: "eum-sik-eul meo-geo-yo",
         english: "I eat food",
         filipino: "Kumakain ako ng pagkain"
+      },
+      {
+        korean: "친구를 만나요",
+        romanization: "chin-gu-reul man-na-yo",
+        english: "I meet a friend",
+        filipino: "Nakikipagkita ako sa kaibigan"
       }
     ],
-    usage: "자음으로 끝나는 명사에는 '을', 모음으로 끝나는 명사에는 '를'을 붙입니다."
+    usage: "자음으로 끝나는 명사에는 '을', 모음으로 끝나는 명사에는 '를'을 붙입니다.",
+    usage_en: "Use '을' after nouns ending with consonants, and '를' after nouns ending with vowels. This is similar to how Filipino uses 'ng' before the object.",
+    tips: "이 조사는 동사의 직접적인 목적어를 나타낼 때 사용됩니다. 필리핀어의 'ng'와 비슷한 역할을 합니다.",
+    tips_en: "This particle is used to mark the direct object of a verb. It functions similarly to 'ng' in Filipino language."
   },
   {
     korean: "의",
     romanization: "ui",
     english: "possessive particle",
     filipino: "ari-arian (possession)",
-    explanation: "소유나 속성을 나타내는 조사",
+    explanation: "소유나 속성을 나타내는 조사입니다. '~의' 형태로 소유관계를 표현합니다.",
+    explanation_en: "This particle shows possession or ownership. It's equivalent to 'of' or apostrophe-s ('s) in English, or 'ni' in Filipino.",
     examples: [
       {
         korean: "철수의 책",
@@ -63,16 +84,26 @@ const particlesData = [
         romanization: "u-ri jip",
         english: "our house",
         filipino: "aming bahay"
+      },
+      {
+        korean: "한국의 수도",
+        romanization: "han-guk-ui su-do",
+        english: "Korea's capital",
+        filipino: "Kabisera ng Korea"
       }
     ],
-    usage: "명사 뒤에 붙여서 소유나 속성을 나타냅니다."
+    usage: "명사 뒤에 붙여서 소유나 속성을 나타냅니다.",
+    usage_en: "Attach to nouns to show possession or ownership. Similar to 'of' in English or 'ni' in Filipino.",
+    tips: "이 조사는 소유관계를 나타낼 때 사용됩니다. 필리핀어의 'ni'와 비슷한 역할을 합니다.",
+    tips_en: "This particle is used to show possession. It functions similarly to 'ni' in Filipino language."
   },
   {
     korean: "에",
     romanization: "e",
     english: "location/time particle",
     filipino: "lugar/oras (location/time)",
-    explanation: "장소나 시간을 나타내는 조사",
+    explanation: "장소나 시간을 나타내는 조사입니다. 목적지나 시점을 표현할 때 사용됩니다.",
+    explanation_en: "This particle indicates location or time. It shows destination (where to go) or time (when something happens). Similar to 'sa' in Filipino.",
     examples: [
       {
         korean: "학교에 가요",
@@ -85,9 +116,18 @@ const particlesData = [
         romanization: "se-si-e man-na-yo",
         english: "Let's meet at 3 o'clock",
         filipino: "Magkita tayo sa 3:00"
+      },
+      {
+        korean: "집에 있어요",
+        romanization: "jib-e i-sseo-yo",
+        english: "I am at home",
+        filipino: "Nasa bahay ako"
       }
     ],
-    usage: "장소나 시간 뒤에 붙여서 목적지나 시점을 나타냅니다."
+    usage: "장소나 시간 뒤에 붙여서 목적지나 시점을 나타냅니다.",
+    usage_en: "Attach to places or times to show destination or time. Similar to 'sa' in Filipino for both location and time.",
+    tips: "이 조사는 '~에' 형태로 장소나 시간을 나타낼 때 사용됩니다. 필리핀어의 'sa'와 비슷합니다.",
+    tips_en: "This particle is used to indicate 'at' or 'to' for places and times. It functions similarly to 'sa' in Filipino language."
   },
   {
     korean: "와/과",
