@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
-import { BookOpen, Globe, GraduationCap, Play, Award } from 'lucide-react'
+import { BookOpen, Globe, GraduationCap, Play, Award, Hash } from 'lucide-react'
 import VocabularyTab from './components/VocabularyTab'
 import GrammarTab from './components/GrammarTab'
 import HangulTab from './components/HangulTab'
 import YoutuberTab from './components/YoutuberTab'
 import TopikTab from './components/TopikTab'
+import ParticlesTab from './components/ParticlesTab'
 
 // 데이터 import
 import vocabularyData from './data/vocabularyData'
 import grammarData from './data/grammarData'
 import youtuberData from './data/youtuberData'
 import topikData from './data/topikData'
+import particlesData from './data/particlesData'
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('hangul')
@@ -19,6 +21,7 @@ const App = () => {
     { id: 'hangul', label: 'Hangul', icon: Globe },
     { id: 'vocabulary', label: 'Vocabulary', icon: BookOpen },
     { id: 'grammar', label: 'Grammar', icon: GraduationCap },
+    { id: 'particles', label: 'Particles', icon: Hash },
     { id: 'topik', label: 'TOPIK', icon: Award },
     { id: 'youtubers', label: 'YouTubers', icon: Play }
   ]
@@ -110,6 +113,9 @@ const App = () => {
         )}
         {activeTab === 'grammar' && (
           <GrammarTab grammarData={grammarData} />
+        )}
+        {activeTab === 'particles' && (
+          <ParticlesTab particlesData={particlesData} />
         )}
         {activeTab === 'topik' && (
           <TopikTab topikData={topikData} />
