@@ -29,13 +29,13 @@ const ParticlesTab = ({ particlesData }) => {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4 sm:space-y-6 md:space-y-8">
       {/* Header */}
-      <div className="bg-white rounded-2xl shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">한국어 조사 (Korean Particles)</h2>
-        <p className="text-lg text-gray-600 text-center mb-4">Learn Korean particles with detailed explanations in English and Filipino</p>
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg">
-          <p className="text-center text-gray-700">
+      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 text-center">한국어 조사 (Korean Particles)</h2>
+        <p className="text-base sm:text-lg text-gray-600 text-center mb-4">Learn Korean particles with detailed explanations in English and Filipino</p>
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-3 sm:p-4 rounded-lg">
+          <p className="text-center text-gray-700 text-sm sm:text-base">
             <strong>For Filipino Learners:</strong> This section helps you understand Korean particles (조사) which are essential for Korean grammar. 
             Each particle has detailed explanations in both Korean and English, plus practical examples with Filipino translations.
           </p>
@@ -44,32 +44,32 @@ const ParticlesTab = ({ particlesData }) => {
 
       {/* Particle Card */}
       {currentParticle && (
-        <div className="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto">
-          <div className="space-y-6">
+        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 max-w-4xl mx-auto">
+          <div className="space-y-4 sm:space-y-6">
             {/* Particle Header */}
-            <div className="text-center space-y-4">
-              <div className="text-6xl md:text-7xl font-bold text-gray-800">
+            <div className="text-center space-y-3 sm:space-y-4">
+              <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800">
                 {currentParticle.korean}
               </div>
               
-              <div className="text-2xl text-gray-600 italic">
+              <div className="text-lg sm:text-xl md:text-2xl text-gray-600 italic">
                 {currentParticle.romanization}
               </div>
 
-              <div className="flex justify-center space-x-4">
-                <div className="bg-gradient-to-r from-blue-50 to-blue-100 px-6 py-3 rounded-xl">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-2xl">🇺🇸</span>
-                    <span className="font-semibold text-blue-700">English:</span>
-                    <span className="text-lg text-blue-800">{currentParticle.english}</span>
+              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+                <div className="bg-gradient-to-r from-blue-50 to-blue-100 px-4 sm:px-6 py-3 rounded-xl">
+                  <div className="flex items-center justify-center space-x-2">
+                    <span className="text-xl sm:text-2xl">🇺🇸</span>
+                    <span className="font-semibold text-blue-700 text-sm sm:text-base">English:</span>
+                    <span className="text-base sm:text-lg text-blue-800">{currentParticle.english}</span>
                   </div>
                 </div>
                 
-                <div className="bg-gradient-to-r from-red-50 to-red-100 px-6 py-3 rounded-xl">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-2xl">🇵🇭</span>
-                    <span className="font-semibold text-red-700">Filipino:</span>
-                    <span className="text-lg text-red-800">{currentParticle.filipino}</span>
+                <div className="bg-gradient-to-r from-red-50 to-red-100 px-4 sm:px-6 py-3 rounded-xl">
+                  <div className="flex items-center justify-center space-x-2">
+                    <span className="text-xl sm:text-2xl">🇵🇭</span>
+                    <span className="font-semibold text-red-700 text-sm sm:text-base">Filipino:</span>
+                    <span className="text-base sm:text-lg text-red-800">{currentParticle.filipino}</span>
                   </div>
                 </div>
               </div>

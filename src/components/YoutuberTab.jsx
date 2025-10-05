@@ -331,36 +331,36 @@ const YoutuberTab = ({ youtuberData }) => {
   );
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4 sm:space-y-6 md:space-y-8">
       <div className="text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">Recommended Korean Learning YouTubers</h2>
-        <p className="text-xl text-gray-600 mb-8">Discover the best Korean language channels for every level</p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4">Recommended Korean Learning YouTubers</h2>
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">Discover the best Korean language channels for every level</p>
       </div>
 
       {/* Search and Filter */}
-      <div className="bg-white rounded-2xl shadow-lg p-6">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-6">
+      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-4 sm:mb-6">
           {/* Search */}
           <div className="relative w-full lg:w-1/3">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+            <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 sm:w-5 sm:h-5" />
             <input
               type="text"
               placeholder="Search by channel, name, or specialty..."
-              className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+              className="w-full pl-10 sm:pl-12 pr-4 py-2 sm:py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
           {/* Filters */}
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4">
             {/* Level Filter */}
             <div className="flex items-center space-x-2">
-              <Filter size={20} className="text-gray-500" />
+              <Filter size={16} className="text-gray-500 sm:w-5 sm:h-5" />
               <select
                 value={filterLevel}
                 onChange={(e) => setFilterLevel(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="px-2 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
               >
                 <option value="All Levels">All Levels</option>
                 <option value="Beginner">Beginner</option>
@@ -371,11 +371,11 @@ const YoutuberTab = ({ youtuberData }) => {
 
             {/* Sort */}
             <div className="flex items-center space-x-2">
-              <SortAsc size={20} className="text-gray-500" />
+              <SortAsc size={16} className="text-gray-500 sm:w-5 sm:h-5" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="px-2 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
               >
                 <option value="subscribers">Subscribers</option>
                 <option value="rating">Rating</option>
@@ -388,11 +388,11 @@ const YoutuberTab = ({ youtuberData }) => {
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 rounded-lg transition-colors duration-200 ${
+                className={`p-1.5 sm:p-2 rounded-lg transition-colors duration-200 ${
                   viewMode === 'grid' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-600'
                 }`}
               >
-                <div className="grid grid-cols-2 gap-1 w-4 h-4">
+                <div className="grid grid-cols-2 gap-1 w-3 h-3 sm:w-4 sm:h-4">
                   <div className="bg-current rounded"></div>
                   <div className="bg-current rounded"></div>
                   <div className="bg-current rounded"></div>
@@ -401,14 +401,14 @@ const YoutuberTab = ({ youtuberData }) => {
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 rounded-lg transition-colors duration-200 ${
+                className={`p-1.5 sm:p-2 rounded-lg transition-colors duration-200 ${
                   viewMode === 'list' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-600'
                 }`}
               >
-                <div className="space-y-1 w-4 h-4">
-                  <div className="bg-current rounded h-1"></div>
-                  <div className="bg-current rounded h-1"></div>
-                  <div className="bg-current rounded h-1"></div>
+                <div className="space-y-1 w-3 h-3 sm:w-4 sm:h-4">
+                  <div className="bg-current rounded h-0.5 sm:h-1"></div>
+                  <div className="bg-current rounded h-0.5 sm:h-1"></div>
+                  <div className="bg-current rounded h-0.5 sm:h-1"></div>
                 </div>
               </button>
             </div>
@@ -416,10 +416,10 @@ const YoutuberTab = ({ youtuberData }) => {
         </div>
 
         {/* Results Count */}
-        <div className="text-sm text-gray-600">
+        <div className="text-xs sm:text-sm text-gray-600">
           Showing {filteredYoutubers.length} of {youtuberData.length} channels
           {favorites.size > 0 && (
-            <span className="ml-4 text-blue-600">
+            <span className="ml-2 sm:ml-4 text-blue-600">
               • {favorites.size} favorites
             </span>
           )}
@@ -428,13 +428,13 @@ const YoutuberTab = ({ youtuberData }) => {
 
       {/* YouTubers Display */}
       {viewMode === 'grid' ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredYoutubers.map(youtuber => (
             <YoutuberCard key={youtuber.id} youtuber={youtuber} />
           ))}
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {filteredYoutubers.map(youtuber => (
             <YoutuberListItem key={youtuber.id} youtuber={youtuber} />
           ))}
@@ -442,15 +442,15 @@ const YoutuberTab = ({ youtuberData }) => {
       )}
 
       {/* Learning Tips Section */}
-      <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl shadow-lg p-8">
-        <h3 className="text-3xl font-bold mb-6 text-center">Learning Tips with YouTube</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
+        <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Learning Tips with YouTube</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           <div>
-            <h4 className="text-xl font-semibold mb-4 flex items-center">
-              <Star className="mr-2" size={24} />
+            <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 flex items-center">
+              <Star className="mr-2 w-5 h-5 sm:w-6 sm:h-6" />
               For Beginners:
             </h4>
-            <ul className="space-y-3 text-lg">
+            <ul className="space-y-2 sm:space-y-3 text-base sm:text-lg">
               <li className="flex items-start">
                 <span className="text-yellow-300 mr-2">•</span>
                 Start with Hangul pronunciation videos
@@ -470,11 +470,11 @@ const YoutuberTab = ({ youtuberData }) => {
             </ul>
           </div>
           <div>
-            <h4 className="text-xl font-semibold mb-4 flex items-center">
-              <Users className="mr-2" size={24} />
+            <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 flex items-center">
+              <Users className="mr-2 w-5 h-5 sm:w-6 sm:h-6" />
               For Advanced Learners:
             </h4>
-            <ul className="space-y-3 text-lg">
+            <ul className="space-y-2 sm:space-y-3 text-base sm:text-lg">
               <li className="flex items-start">
                 <span className="text-yellow-300 mr-2">•</span>
                 Watch vlogs or dramas without subtitles

@@ -64,29 +64,29 @@ const HangulTab = () => {
   ]
 
   const renderCharacterGrid = (characters) => (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
       {characters.map((char, index) => (
         <div
           key={index}
           onClick={() => playAudio(char.char)}
-          className="bg-white rounded-2xl shadow-lg p-6 text-center cursor-pointer hover:shadow-xl transition-all duration-300 hover:scale-105"
+          className="bg-white rounded-2xl shadow-lg p-3 sm:p-4 md:p-6 text-center cursor-pointer hover:shadow-xl transition-all duration-300 hover:scale-105"
         >
-          <div className="text-6xl font-bold text-blue-600 mb-3">
+          <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-blue-600 mb-2 sm:mb-3">
             {char.char}
           </div>
-          <div className="space-y-2">
-            <div className="font-semibold text-gray-700">{char.name}</div>
-            <div className="text-sm text-gray-500 font-mono">{char.sound}</div>
-            <div className="text-sm text-blue-600">{char.example}</div>
+          <div className="space-y-1 sm:space-y-2">
+            <div className="font-semibold text-gray-700 text-xs sm:text-sm md:text-base">{char.name}</div>
+            <div className="text-xs sm:text-sm text-gray-500 font-mono">{char.sound}</div>
+            <div className="text-xs sm:text-sm text-blue-600">{char.example}</div>
           </div>
           <button
             onClick={(e) => {
               e.stopPropagation()
               playAudio(char.char)
             }}
-            className="mt-3 p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-colors"
+            className="mt-2 sm:mt-3 p-1.5 sm:p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-colors"
           >
-            <Volume2 size={16} />
+            <Volume2 size={14} className="sm:w-4 sm:h-4" />
           </button>
         </div>
       ))}
@@ -94,28 +94,29 @@ const HangulTab = () => {
   )
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4 sm:space-y-6 md:space-y-8">
       {/* Header */}
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-2">Hangul (한글) Learning</h2>
-        <p className="text-gray-600">Learn Korean alphabet: consonants, vowels, combinations, and batchim</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Hangul (한글) Learning</h2>
+        <p className="text-sm sm:text-base text-gray-600">Learn Korean alphabet: consonants, vowels, combinations, and batchim</p>
       </div>
 
       {/* Section Navigation */}
-      <div className="bg-white rounded-2xl shadow-lg p-6">
-        <div className="flex justify-center space-x-4">
+      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
           {sections.map((section) => (
             <button
               key={section.id}
               onClick={() => setActiveSection(section.id)}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+              className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base ${
                 activeSection === section.id
                   ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg'
                   : 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 hover:from-blue-100 hover:to-blue-200'
               }`}
             >
-              <span className="text-xl">{section.icon}</span>
-              <span>{section.label}</span>
+              <span className="text-lg sm:text-xl">{section.icon}</span>
+              <span className="hidden sm:inline">{section.label}</span>
+              <span className="sm:hidden">{section.label.split(' ')[0]}</span>
             </button>
           ))}
         </div>

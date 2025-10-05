@@ -408,27 +408,27 @@ const TopikTab = ({ topikData }) => {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4 sm:space-y-6 md:space-y-8">
       <div className="text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">TOPIK I 시험</h2>
-        <p className="text-xl text-gray-600 mb-8">한국어능력시험 초급 레벨 문제를 풀어보세요!</p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4">TOPIK I 시험</h2>
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">한국어능력시험 초급 레벨 문제를 풀어보세요!</p>
       </div>
 
       {/* Test Info */}
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl shadow-lg p-8">
-        <h3 className="text-2xl font-bold mb-4">시험 정보</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
+        <h3 className="text-xl sm:text-2xl font-bold mb-4">시험 정보</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6">
           <div className="text-center">
-            <div className="text-3xl font-bold mb-2">{topikData.level1.totalQuestions}</div>
-            <div className="text-lg">총 문제 수</div>
+            <div className="text-2xl sm:text-3xl font-bold mb-2">{topikData.level1.totalQuestions}</div>
+            <div className="text-base sm:text-lg">총 문제 수</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold mb-2">{topikData.level1.timeLimit}분</div>
-            <div className="text-lg">시험 시간</div>
+            <div className="text-2xl sm:text-3xl font-bold mb-2">{topikData.level1.timeLimit}분</div>
+            <div className="text-base sm:text-lg">시험 시간</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold mb-2">1-2급</div>
-            <div className="text-lg">난이도</div>
+            <div className="text-2xl sm:text-3xl font-bold mb-2">1-2급</div>
+            <div className="text-base sm:text-lg">난이도</div>
           </div>
         </div>
         
@@ -436,34 +436,34 @@ const TopikTab = ({ topikData }) => {
         <div className="text-center">
           <button
             onClick={startFullTest}
-            className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors duration-300 shadow-lg"
+            className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-colors duration-300 shadow-lg"
           >
             🎯 전체 시험 보기 (70문제, 100분)
           </button>
-          <p className="text-sm mt-2 opacity-90">모든 섹션을 한번에 풀어보세요!</p>
+          <p className="text-xs sm:text-sm mt-2 opacity-90">모든 섹션을 한번에 풀어보세요!</p>
         </div>
       </div>
 
       {/* Sections */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         {topikData.level1.sections.map((section) => (
-          <div key={section.id} className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-            <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                {section.id === 'vocabulary' && <BookOpen className="text-blue-600" size={32} />}
-                {section.id === 'reading' && <BookOpen className="text-green-600" size={32} />}
-                {section.id === 'listening' && <Headphones className="text-purple-600" size={32} />}
+          <div key={section.id} className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300">
+            <div className="text-center mb-4 sm:mb-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                {section.id === 'vocabulary' && <BookOpen className="text-blue-600 w-6 h-6 sm:w-8 sm:h-8" />}
+                {section.id === 'reading' && <BookOpen className="text-green-600 w-6 h-6 sm:w-8 sm:h-8" />}
+                {section.id === 'listening' && <Headphones className="text-purple-600 w-6 h-6 sm:w-8 sm:h-8" />}
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{section.title}</h3>
-              <p className="text-gray-600 mb-2">{section.questions}문제 • {section.timeLimit}분</p>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">{section.title}</h3>
+              <p className="text-sm sm:text-base text-gray-600 mb-2">{section.questions}문제 • {section.timeLimit}분</p>
               {section.id === 'listening' && (
-                <p className="text-sm text-purple-600 font-medium">🎧 듣기 기능 포함</p>
+                <p className="text-xs sm:text-sm text-purple-600 font-medium">🎧 듣기 기능 포함</p>
               )}
             </div>
             
             <button
               onClick={() => startTest(section)}
-              className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-300"
+              className="w-full bg-blue-600 text-white py-2 sm:py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-300 text-sm sm:text-base"
             >
               시험 시작
             </button>
