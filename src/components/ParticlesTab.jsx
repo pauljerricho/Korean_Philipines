@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 import { ChevronLeft, ChevronRight, Volume2, BookOpen, Lightbulb, ArrowRight } from 'lucide-react'
 
 const ParticlesTab = ({ particlesData }) => {
-  const [selectedCategory, setSelectedCategory] = useState(null)
   const [currentParticleIndex, setCurrentParticleIndex] = useState(0)
   const [showExamples, setShowExamples] = useState(false)
 
-  const currentParticles = selectedCategory ? particlesData[selectedCategory].particles : []
-  const currentParticle = currentParticles[currentParticleIndex]
+  const currentParticle = particlesData[currentParticleIndex]
 
   const playAudio = (text, lang = 'ko-KR') => {
     if ('speechSynthesis' in window) {
@@ -19,67 +17,27 @@ const ParticlesTab = ({ particlesData }) => {
   }
 
   const nextParticle = () => {
-    if (currentParticles.length === 0) return
-    setCurrentParticleIndex((prev) => (prev + 1) % currentParticles.length)
+    if (particlesData.length === 0) return
+    setCurrentParticleIndex((prev) => (prev + 1) % particlesData.length)
     setShowExamples(false)
   }
 
   const prevParticle = () => {
-    if (currentParticles.length === 0) return
-    setCurrentParticleIndex((prev) => (prev - 1 + currentParticles.length) % currentParticles.length)
+    if (particlesData.length === 0) return
+    setCurrentParticleIndex((prev) => (prev - 1 + particlesData.length) % particlesData.length)
     setShowExamples(false)
-  }
-
-  const getCategoryIcon = (category) => {
-    const icons = {
-      basic: '🔤',
-      location: '📍',
-      direction: '🧭',
-      advanced: '⭐'
-    }
-    return icons[category] || '📚'
-  }
-
-  const getCategoryColor = (category) => {
-    const colors = {
-      basic: 'from-blue-500 to-blue-600',
-      location: 'from-green-500 to-green-600',
-      direction: 'from-purple-500 to-purple-600',
-      advanced: 'from-orange-500 to-orange-600'
-    }
-    return colors[category] || 'from-gray-500 to-gray-600'
   }
 
   return (
     <div className="space-y-8">
-      {/* Category Selection */}
+      {/* Header */}
       <div className="bg-white rounded-2xl shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">조사 카테고리 선택</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {Object.keys(particlesData).map((category) => (
-            <button
-              key={category}
-              onClick={() => {
-                setSelectedCategory(category)
-                setCurrentParticleIndex(0)
-                setShowExamples(false)
-              }}
-              className={`p-6 rounded-xl font-semibold transition-all duration-300 text-left ${getCategoryColor(category)} text-white shadow-lg hover:shadow-xl transform hover:scale-105`}
-            >
-              <div className="flex items-center space-x-3 mb-2">
-                <span className="text-3xl">{getCategoryIcon(category)}</span>
-                <div>
-                  <h3 className="text-xl font-bold">{particlesData[category].title}</h3>
-                  <p className="text-sm opacity-90">{particlesData[category].description}</p>
-                </div>
-              </div>
-            </button>
-          ))}
-        </div>
+        <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">한국어 조사 (Korean Particles)</h2>
+        <p className="text-lg text-gray-600 text-center">HowToStudyKorean Lesson 12 기반</p>
       </div>
 
       {/* Particle Card */}
-      {selectedCategory && currentParticle && (
+      {currentParticle && (
         <div className="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto">
           <div className="space-y-6">
             {/* Particle Header */}
@@ -196,7 +154,7 @@ const ParticlesTab = ({ particlesData }) => {
             <div className="flex justify-between items-center pt-6 border-t border-gray-200">
               <button
                 onClick={prevParticle}
-                disabled={currentParticles.length === 0}
+                disabled={particlesData.length === 0}
                 className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:from-gray-200 hover:to-gray-300 hover:shadow-md flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <ChevronLeft size={20} />
@@ -204,12 +162,12 @@ const ParticlesTab = ({ particlesData }) => {
               </button>
               
               <div className="text-gray-600 font-semibold text-lg">
-                {currentParticleIndex + 1} / {currentParticles.length}
+                {currentParticleIndex + 1} / {particlesData.length}
               </div>
               
               <button
                 onClick={nextParticle}
-                disabled={currentParticles.length === 0}
+                disabled={particlesData.length === 0}
                 className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:from-gray-200 hover:to-gray-300 hover:shadow-md flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <span>다음</span>
@@ -220,12 +178,12 @@ const ParticlesTab = ({ particlesData }) => {
         </div>
       )}
 
-      {/* No Category Selected */}
-      {!selectedCategory && (
+      {/* No Particles Available */}
+      {!currentParticle && (
         <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
           <div className="text-6xl mb-4">🔤</div>
-          <h3 className="text-2xl font-bold text-gray-700 mb-2">조사 카테고리를 선택하세요</h3>
-          <p className="text-gray-500">위에서 조사 카테고리를 선택하여 학습을 시작하세요!</p>
+          <h3 className="text-2xl font-bold text-gray-700 mb-2">조사 데이터를 불러오는 중...</h3>
+          <p className="text-gray-500">잠시만 기다려주세요.</p>
         </div>
       )}
     </div>
