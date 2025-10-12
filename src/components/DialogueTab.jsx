@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { MessageCircle, Volume2, ChevronRight, ChevronLeft, Search, Filter } from 'lucide-react'
+import { MessageCircle, Volume2, ChevronRight, ChevronLeft } from 'lucide-react'
 
 const DialogueTab = ({ dialogueData }) => {
   const [activeDifficulty, setActiveDifficulty] = useState('beginner')
   const [activeCategory, setActiveCategory] = useState('greetings')
   const [currentDialogue, setCurrentDialogue] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [searchTerm, setSearchTerm] = useState('')
   const [showExplanation, setShowExplanation] = useState(false)
 
   const playAudio = (text) => {
@@ -86,16 +85,6 @@ const DialogueTab = ({ dialogueData }) => {
     }
   }
 
-  // 검색 필터링
-  const filteredCategories = currentData.categories.map(category => ({
-    ...category,
-    dialogues: category.dialogues.filter(dialogue => 
-      dialogue.korean.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      dialogue.english.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      dialogue.filipino.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  })).filter(category => category.dialogues.length > 0)
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -141,25 +130,11 @@ const DialogueTab = ({ dialogueData }) => {
         </div>
       </div>
 
-      {/* Search */}
-      <div className="bg-white rounded-2xl shadow-lg p-6">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-          <input
-            type="text"
-            placeholder="Search in Korean, English, or Filipino..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-        </div>
-      </div>
-
       {/* Category Selection */}
       <div className="bg-white rounded-2xl shadow-lg p-6">
         <h3 className="text-xl font-bold text-gray-800 mb-4">📚 Category Selection</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {(searchTerm ? filteredCategories : currentData.categories).map((category) => (
+          {currentData.categories.map((category) => (
             <button
               key={category.id}
               onClick={() => {
