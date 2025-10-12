@@ -1,259 +1,271 @@
 import React, { useState } from 'react'
-import { ChevronLeft, ChevronRight, Volume2, BookOpen, Lightbulb, ArrowRight } from 'lucide-react'
+import { BookOpen, Volume2, ChevronRight, ChevronLeft } from 'lucide-react'
 
 const ParticlesTab = ({ particlesData }) => {
-  const [currentParticleIndex, setCurrentParticleIndex] = useState(0)
-  const [showExamples, setShowExamples] = useState(false)
+  const [activeCategory, setActiveCategory] = useState('basic')
+  const [currentParticle, setCurrentParticle] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(false)
 
-  const currentParticle = particlesData[currentParticleIndex]
-
-  const playAudio = (text, lang = 'ko-KR') => {
+  const playAudio = (text) => {
     if ('speechSynthesis' in window) {
+      if (isPlaying) {
+        speechSynthesis.cancel()
+        setIsPlaying(false)
+        return
+      }
+
       const utterance = new SpeechSynthesisUtterance(text)
-      utterance.lang = lang
-      utterance.rate = 0.7
+      utterance.lang = 'ko-KR'
+      utterance.rate = 0.8
+      utterance.pitch = 1
+      
+      utterance.onstart = () => setIsPlaying(true)
+      utterance.onend = () => setIsPlaying(false)
+      utterance.onerror = () => setIsPlaying(false)
+      
       speechSynthesis.speak(utterance)
     }
   }
 
+  const currentData = particlesData[activeCategory]
+  const currentParticleData = currentData.particles[currentParticle]
+
   const nextParticle = () => {
-    if (particlesData.length === 0) return
-    setCurrentParticleIndex((prev) => (prev + 1) % particlesData.length)
-    setShowExamples(false)
+    if (currentParticle < currentData.particles.length - 1) {
+      setCurrentParticle(currentParticle + 1)
+    }
   }
 
   const prevParticle = () => {
-    if (particlesData.length === 0) return
-    setCurrentParticleIndex((prev) => (prev - 1 + particlesData.length) % particlesData.length)
-    setShowExamples(false)
+    if (currentParticle > 0) {
+      setCurrentParticle(currentParticle - 1)
+    }
   }
 
   return (
-    <div className="space-y-4 sm:space-y-6 md:space-y-8">
+    <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 text-center">한국어 조사 (Korean Particles)</h2>
-        <p className="text-base sm:text-lg text-gray-600 text-center mb-4">Learn Korean particles with detailed explanations in English and Filipino</p>
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-3 sm:p-4 rounded-lg">
-          <p className="text-center text-gray-700 text-sm sm:text-base">
-            <strong>For Filipino Learners:</strong> This section helps you understand Korean particles (조사) which are essential for Korean grammar. 
-            Each particle has detailed explanations in both Korean and English, plus practical examples with Filipino translations.
-          </p>
+      <div className="text-center">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">한국어 조사 (Korean Particles)</h2>
+        <p className="text-lg text-gray-600 mb-6">한국어의 중요한 조사들을 배워보세요!</p>
+      </div>
+
+      {/* Category Selection */}
+      <div className="flex justify-center space-x-4 mb-8">
+        <button
+          onClick={() => {
+            setActiveCategory('basic')
+            setCurrentParticle(0)
+          }}
+          className={`px-6 py-3 rounded-xl font-semibold transition-colors duration-300 ${
+            activeCategory === 'basic'
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+          }`}
+        >
+          📚 기본 조사
+        </button>
+        <button
+          onClick={() => {
+            setActiveCategory('advanced')
+            setCurrentParticle(0)
+          }}
+          className={`px-6 py-3 rounded-xl font-semibold transition-colors duration-300 ${
+            activeCategory === 'advanced'
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+          }`}
+        >
+          🎯 고급 조사
+        </button>
+      </div>
+
+      {/* Current Category Info */}
+      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl shadow-lg p-6 text-center">
+        <h3 className="text-2xl font-bold mb-2">{currentData.title}</h3>
+        <p className="text-lg opacity-90">{currentData.description}</p>
+        <div className="mt-4 text-sm opacity-80">
+          {currentParticle + 1} / {currentData.particles.length} 조사
         </div>
       </div>
 
       {/* Particle Card */}
-      {currentParticle && (
-        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 max-w-4xl mx-auto">
-          <div className="space-y-4 sm:space-y-6">
-            {/* Particle Header */}
-            <div className="text-center space-y-3 sm:space-y-4">
-              <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800">
-                {currentParticle.korean}
-              </div>
-              
-              <div className="text-lg sm:text-xl md:text-2xl text-gray-600 italic">
-                {currentParticle.romanization}
-              </div>
+      <div className="bg-white rounded-2xl shadow-lg p-6">
+        <div className="text-center mb-6">
+          <div className="text-4xl font-bold text-blue-600 mb-2">
+            {currentParticleData.particle}
+          </div>
+          <div className="text-xl text-gray-700 mb-4">
+            {currentParticleData.usage}
+          </div>
+          <button
+            onClick={() => playAudio(currentParticleData.particle)}
+            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-300 flex items-center space-x-2 mx-auto"
+          >
+            <Volume2 size={20} />
+            <span>{isPlaying ? '정지' : '발음 듣기'}</span>
+          </button>
+        </div>
 
-              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-                <div className="bg-gradient-to-r from-blue-50 to-blue-100 px-4 sm:px-6 py-3 rounded-xl">
-                  <div className="flex items-center justify-center space-x-2">
-                    <span className="text-xl sm:text-2xl">🇺🇸</span>
-                    <span className="font-semibold text-blue-700 text-sm sm:text-base">English:</span>
-                    <span className="text-base sm:text-lg text-blue-800">{currentParticle.english}</span>
-                  </div>
-                </div>
-                
-                <div className="bg-gradient-to-r from-red-50 to-red-100 px-4 sm:px-6 py-3 rounded-xl">
-                  <div className="flex items-center justify-center space-x-2">
-                    <span className="text-xl sm:text-2xl">🇵🇭</span>
-                    <span className="font-semibold text-red-700 text-sm sm:text-base">Filipino:</span>
-                    <span className="text-base sm:text-lg text-red-800">{currentParticle.filipino}</span>
-                  </div>
-                </div>
+        {/* Examples */}
+        <div className="space-y-4">
+          <h4 className="text-xl font-semibold text-gray-800 mb-4">📝 예문 (Examples)</h4>
+          {currentParticleData.examples.map((example, index) => (
+            <div key={index} className="bg-gray-50 rounded-lg p-4 space-y-2">
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={() => playAudio(example.korean)}
+                  className="text-blue-600 hover:text-blue-800 transition-colors duration-300"
+                >
+                  <Volume2 size={16} />
+                </button>
+                <span className="text-lg font-semibold text-gray-800">{example.korean}</span>
+              </div>
+              <div className="text-gray-600">
+                <span className="font-medium">🇺🇸 English:</span> {example.english}
+              </div>
+              <div className="text-gray-600">
+                <span className="font-medium">🇵🇭 Filipino:</span> {example.filipino}
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* Explanation */}
-            <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-xl">
-              <div className="flex items-center space-x-2 mb-3">
-                <Lightbulb className="text-yellow-600" size={24} />
-                <h3 className="text-xl font-bold text-yellow-800">설명 (Explanation)</h3>
-              </div>
-              <div className="space-y-4">
-                <div className="bg-white p-4 rounded-lg">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <span className="text-2xl">🇰🇷</span>
-                    <span className="font-semibold text-gray-700">Korean:</span>
-                  </div>
-                  <p className="text-lg text-gray-800">{currentParticle.explanation}</p>
-                </div>
-                {currentParticle.explanation_en && (
-                  <div className="bg-white p-4 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-2xl">🇺🇸</span>
-                      <span className="font-semibold text-gray-700">English:</span>
-                    </div>
-                    <p className="text-lg text-gray-800">{currentParticle.explanation_en}</p>
-                  </div>
-                )}
-              </div>
+        {/* Explanation */}
+        <div className="mt-6 space-y-3">
+          <h4 className="text-xl font-semibold text-gray-800 mb-3">💡 설명 (Explanation)</h4>
+          <div className="p-4 bg-blue-50 rounded-lg text-gray-700">
+            <span className="font-semibold text-blue-800">🇰🇷 한국어:</span><br/>
+            {currentParticleData.explanation}
+          </div>
+          {currentParticleData.explanationEn && (
+            <div className="p-4 bg-green-50 rounded-lg text-gray-700">
+              <span className="font-semibold text-green-800">🇺🇸 English:</span><br/>
+              {currentParticleData.explanationEn}
             </div>
-
-            {/* Usage */}
-            <div className="bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-xl">
-              <div className="flex items-center space-x-2 mb-3">
-                <BookOpen className="text-green-600" size={24} />
-                <h3 className="text-xl font-bold text-green-800">사용법 (Usage)</h3>
-              </div>
-              <div className="space-y-4">
-                <div className="bg-white p-4 rounded-lg">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <span className="text-2xl">🇰🇷</span>
-                    <span className="font-semibold text-gray-700">Korean:</span>
-                  </div>
-                  <p className="text-lg text-gray-800">{currentParticle.usage}</p>
-                </div>
-                {currentParticle.usage_en && (
-                  <div className="bg-white p-4 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-2xl">🇺🇸</span>
-                      <span className="font-semibold text-gray-700">English:</span>
-                    </div>
-                    <p className="text-lg text-gray-800">{currentParticle.usage_en}</p>
-                  </div>
-                )}
-              </div>
+          )}
+          {currentParticleData.explanationFil && (
+            <div className="p-4 bg-yellow-50 rounded-lg text-gray-700">
+              <span className="font-semibold text-yellow-800">🇵🇭 Filipino:</span><br/>
+              {currentParticleData.explanationFil}
             </div>
+          )}
+        </div>
 
-            {/* Tips */}
-            {currentParticle.tips && (
-              <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-xl">
-                <div className="flex items-center space-x-2 mb-3">
-                  <span className="text-2xl">💡</span>
-                  <h3 className="text-xl font-bold text-purple-800">팁 (Tips)</h3>
-                </div>
-                <div className="space-y-4">
-                  <div className="bg-white p-4 rounded-lg">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-2xl">🇰🇷</span>
-                      <span className="font-semibold text-gray-700">Korean:</span>
-                    </div>
-                    <p className="text-lg text-gray-800">{currentParticle.tips}</p>
-                  </div>
-                  {currentParticle.tips_en && (
-                    <div className="bg-white p-4 rounded-lg">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <span className="text-2xl">🇺🇸</span>
-                        <span className="font-semibold text-gray-700">English:</span>
-                      </div>
-                      <p className="text-lg text-gray-800">{currentParticle.tips_en}</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* Examples Toggle */}
-            <div className="text-center">
+        {/* Navigation */}
+        <div className="flex justify-between mt-8">
+          <button
+            onClick={prevParticle}
+            disabled={currentParticle === 0}
+            className="flex items-center space-x-2 px-4 py-2 bg-gray-500 text-white rounded-lg font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-gray-600 transition-colors duration-300"
+          >
+            <ChevronLeft size={20} />
+            <span>이전</span>
+          </button>
+          
+          <div className="flex space-x-2">
+            {currentData.particles.map((_, index) => (
               <button
-                onClick={() => setShowExamples(!showExamples)}
-                className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:from-purple-600 hover:to-purple-700 hover:shadow-lg hover:-translate-y-1 flex items-center space-x-2 mx-auto"
-              >
-                <span>예문 보기/숨기기</span>
-                <ArrowRight className={`transform transition-transform duration-300 ${showExamples ? 'rotate-90' : ''}`} size={20} />
-              </button>
+                key={index}
+                onClick={() => setCurrentParticle(index)}
+                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                  index === currentParticle ? 'bg-blue-600' : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={nextParticle}
+            disabled={currentParticle === currentData.particles.length - 1}
+            className="flex items-center space-x-2 px-4 py-2 bg-gray-500 text-white rounded-lg font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-gray-600 transition-colors duration-300"
+          >
+            <span>다음</span>
+            <ChevronRight size={20} />
+          </button>
+        </div>
+      </div>
+
+      {/* All Particles List */}
+      <div className="bg-white rounded-2xl shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+          📋 전체 조사 목록
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {currentData.particles.map((particle, index) => (
+            <button
+              key={particle.id}
+              onClick={() => setCurrentParticle(index)}
+              className={`p-4 rounded-lg border-2 transition-all duration-300 text-left ${
+                index === currentParticle
+                  ? 'border-blue-500 bg-blue-50'
+                  : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+              }`}
+            >
+              <div className="text-xl font-bold text-blue-600 mb-1">
+                {particle.particle}
+              </div>
+              <div className="text-sm text-gray-600">
+                {particle.usage}
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Grammar Rules */}
+      <div className="bg-white rounded-2xl shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+          📚 문법 규칙 (Grammar Rules)
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-4">
+            <h4 className="text-lg font-semibold text-blue-600">🔤 Vowel/Consonant Rules</h4>
+            <div className="space-y-2 text-sm text-gray-700">
+              <p>• <strong>은/는:</strong> 은 (after consonants), 는 (after vowels)</p>
+              <p>• <strong>이/가:</strong> 이 (after consonants), 가 (after vowels)</p>
+              <p>• <strong>을/를:</strong> 을 (after consonants), 를 (after vowels)</p>
+              <p>• <strong>와/과:</strong> 와 (after vowels), 과 (after consonants)</p>
             </div>
-
-            {/* Examples */}
-            {showExamples && currentParticle.examples && (
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-gray-800 text-center mb-6">예문 (Examples)</h3>
-                {currentParticle.examples.map((example, index) => (
-                  <div key={index} className="bg-gradient-to-r from-gray-50 to-gray-100 p-6 rounded-xl">
-                    <div className="space-y-4">
-                      {/* Korean Example */}
-                      <div className="text-center">
-                        <div className="text-3xl font-bold text-gray-800 mb-2">
-                          {example.korean}
-                        </div>
-                        <div className="text-lg text-gray-600 italic">
-                          {example.romanization}
-                        </div>
-                      </div>
-
-                      {/* Translations */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="bg-blue-50 p-4 rounded-lg">
-                          <div className="flex items-center space-x-2 mb-2">
-                            <span className="text-xl">🇺🇸</span>
-                            <span className="font-semibold text-blue-700">English:</span>
-                          </div>
-                          <div className="text-blue-800">{example.english}</div>
-                        </div>
-                        
-                        <div className="bg-red-50 p-4 rounded-lg">
-                          <div className="flex items-center space-x-2 mb-2">
-                            <span className="text-xl">🇵🇭</span>
-                            <span className="font-semibold text-red-700">Filipino:</span>
-                          </div>
-                          <div className="text-red-800">{example.filipino}</div>
-                        </div>
-                      </div>
-
-                      {/* Audio Button */}
-                      <div className="text-center">
-                        <button
-                          onClick={() => playAudio(example.korean, 'ko-KR')}
-                          className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:from-blue-600 hover:to-blue-700 hover:shadow-lg hover:-translate-y-1 flex items-center space-x-2 mx-auto"
-                        >
-                          <Volume2 size={20} />
-                          <span>발음 듣기</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Navigation */}
-            <div className="flex justify-between items-center pt-6 border-t border-gray-200">
-              <button
-                onClick={prevParticle}
-                disabled={particlesData.length === 0}
-                className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:from-gray-200 hover:to-gray-300 hover:shadow-md flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <ChevronLeft size={20} />
-                <span>이전</span>
-              </button>
-              
-              <div className="text-gray-600 font-semibold text-lg">
-                {currentParticleIndex + 1} / {particlesData.length}
-              </div>
-              
-              <button
-                onClick={nextParticle}
-                disabled={particlesData.length === 0}
-                className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:from-gray-200 hover:to-gray-300 hover:shadow-md flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <span>다음</span>
-                <ChevronRight size={20} />
-              </button>
+          </div>
+          <div className="space-y-4">
+            <h4 className="text-lg font-semibold text-green-600">📍 Usage Tips</h4>
+            <div className="space-y-2 text-sm text-gray-700">
+              <p>• <strong>은/는 vs 이/가:</strong> 은/는 for topics, 이/가 for subjects</p>
+              <p>• <strong>에 vs 에서:</strong> 에 for static locations, 에서 for actions</p>
+              <p>• <strong>도:</strong> Can replace other particles to add emphasis</p>
+              <p>• <strong>만:</strong> Can replace other particles to add restriction</p>
             </div>
           </div>
         </div>
-      )}
+      </div>
 
-      {/* No Particles Available */}
-      {!currentParticle && (
-        <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
-          <div className="text-6xl mb-4">🔤</div>
-          <h3 className="text-2xl font-bold text-gray-700 mb-2">조사 데이터를 불러오는 중...</h3>
-          <p className="text-gray-500">잠시만 기다려주세요.</p>
+      {/* Learning Tips */}
+      <div className="bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-2xl shadow-lg p-6">
+        <h3 className="text-2xl font-bold mb-6 text-center">
+          💡 학습 팁 (Learning Tips)
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-3">
+            <h4 className="text-lg font-semibold">🎯 Practice Tips</h4>
+            <ul className="space-y-2 text-sm">
+              <li>• Start with basic particles (은/는, 이/가, 을/를)</li>
+              <li>• Use real sentences to understand usage</li>
+              <li>• Pay attention to context</li>
+              <li>• Practice regularly with examples</li>
+            </ul>
+          </div>
+          <div className="space-y-3">
+            <h4 className="text-lg font-semibold">⚠️ Common Mistakes</h4>
+            <ul className="space-y-2 text-sm">
+              <li>• Don't confuse 은/는 vs 이/가</li>
+              <li>• Don't mix 에 vs 에서</li>
+              <li>• Check vowel/consonant rules</li>
+              <li>• Don't overuse particles</li>
+            </ul>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   )
 }
