@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-import { BookOpen, Globe, GraduationCap, Play, Award, Hash } from 'lucide-react'
+import { BookOpen, Globe, GraduationCap, MessageCircle, Award, Hash } from 'lucide-react'
 import VocabularyTab from './components/VocabularyTab'
 import GrammarTab from './components/GrammarTab'
 import HangulTab from './components/HangulTab'
-import YoutuberTab from './components/YoutuberTab'
+import DialogueTab from './components/DialogueTab'
 import TopikTab from './components/TopikTab'
 import ParticlesTab from './components/ParticlesTab'
 
 // 데이터 import
 import vocabularyData from './data/vocabularyData'
 import grammarData from './data/grammarData'
-import youtuberData from './data/youtuberData'
+import dialogueData from './data/dialogueData'
 import topikData from './data/topikData'
 import particlesData from './data/particlesData'
 
@@ -22,8 +22,8 @@ const App = () => {
     { id: 'vocabulary', label: 'Vocabulary', icon: BookOpen },
     { id: 'grammar', label: 'Grammar', icon: GraduationCap },
     { id: 'particles', label: 'Particles', icon: Hash },
-    { id: 'topik', label: 'TOPIK', icon: Award },
-    { id: 'youtubers', label: 'YouTubers', icon: Play }
+    { id: 'dialogue', label: 'Dialogue', icon: MessageCircle },
+    { id: 'topik', label: 'TOPIK', icon: Award }
   ]
 
   const getCategoryIcon = (category) => {
@@ -117,11 +117,11 @@ const App = () => {
         {activeTab === 'particles' && (
           <ParticlesTab particlesData={particlesData} />
         )}
+        {activeTab === 'dialogue' && (
+          <DialogueTab dialogueData={dialogueData} />
+        )}
         {activeTab === 'topik' && (
           <TopikTab topikData={topikData} />
-        )}
-        {activeTab === 'youtubers' && (
-          <YoutuberTab youtuberData={youtuberData} />
         )}
       </main>
 
