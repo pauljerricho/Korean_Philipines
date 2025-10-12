@@ -269,7 +269,7 @@ const TopikTab = ({ topikData }) => {
             className="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-300 flex items-center mx-auto"
           >
             <RotateCcw className="mr-2" size={20} />
-            다시 시험보기
+            Retake Test
           </button>
         </div>
       </div>
@@ -328,7 +328,7 @@ const TopikTab = ({ topikData }) => {
                   >
                     {isPlaying ? <Pause size={20} /> : <Play size={20} />}
                     <Volume2 size={20} />
-                    <span>{isPlaying ? '듣기 중지' : '기본 듣기'}</span>
+                    <span>{isPlaying ? 'Stop Listening' : 'Basic Listening'}</span>
                   </button>
                   <button
                     onClick={() => {
@@ -340,10 +340,10 @@ const TopikTab = ({ topikData }) => {
                     className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
                   >
                     <Volume2 size={20} />
-                    <span>자연스러운 듣기</span>
+                    <span>Natural Listening</span>
                   </button>
                 </div>
-                <span className="text-sm text-gray-600">음성을 듣고 답하세요</span>
+                <span className="text-sm text-gray-600">Listen to the audio and answer</span>
               </div>
             )}
             
@@ -407,7 +407,7 @@ const TopikTab = ({ topikData }) => {
               disabled={currentQuestion === 0}
               className="px-6 py-3 bg-gray-500 text-white rounded-xl font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-gray-600 transition-colors duration-300"
             >
-              이전 문제
+              Previous Question
             </button>
             
             <div className="flex space-x-4">
@@ -416,14 +416,14 @@ const TopikTab = ({ topikData }) => {
                   onClick={finishTest}
                   className="px-8 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-colors duration-300"
                 >
-                  시험 완료
+                  Finish Test
                 </button>
               ) : (
                 <button
                   onClick={nextQuestion}
                   className="px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-300"
                 >
-                  다음 문제
+                  Next Question
                 </button>
               )}
             </div>
@@ -464,9 +464,9 @@ const TopikTab = ({ topikData }) => {
             onClick={startFullTest}
             className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-colors duration-300 shadow-lg"
           >
-            🎯 전체 시험 보기 (70문제, 100분)
+            🎯 Full Test (70 questions, 100 minutes)
           </button>
-          <p className="text-xs sm:text-sm mt-2 opacity-90">모든 섹션을 한번에 풀어보세요!</p>
+          <p className="text-xs sm:text-sm mt-2 opacity-90">Try all sections at once!</p>
         </div>
       </div>
 
@@ -491,7 +491,7 @@ const TopikTab = ({ topikData }) => {
               onClick={() => startTest(section)}
               className="w-full bg-blue-600 text-white py-2 sm:py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-300 text-sm sm:text-base"
             >
-              시험 시작
+              Start Test
             </button>
           </div>
         ))}

@@ -166,14 +166,14 @@ const DialogueTab = ({ dialogueData }) => {
                 className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-300 flex items-center space-x-2"
               >
                 <Volume2 size={20} />
-                <span>{isPlaying ? '정지' : '자연스러운 발음'}</span>
+                <span>{isPlaying ? 'Stop' : 'Natural Voice'}</span>
               </button>
               <button
                 onClick={() => playAudio(currentDialogueData.korean)}
                 className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-300 flex items-center space-x-2"
               >
                 <Volume2 size={20} />
-                <span>{isPlaying ? '정지' : '기본 발음'}</span>
+                <span>{isPlaying ? 'Stop' : 'Basic Voice'}</span>
               </button>
             </div>
           </div>
@@ -212,7 +212,7 @@ const DialogueTab = ({ dialogueData }) => {
               onClick={() => setShowExplanation(!showExplanation)}
               className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors duration-300"
             >
-              {showExplanation ? '설명 숨기기' : '설명 보기'}
+              {showExplanation ? 'Hide Explanation' : 'Show Explanation'}
             </button>
           </div>
 
@@ -247,7 +247,7 @@ const DialogueTab = ({ dialogueData }) => {
               className="flex items-center space-x-2 px-4 py-2 bg-gray-500 text-white rounded-lg font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-gray-600 transition-colors duration-300"
             >
               <ChevronLeft size={20} />
-              <span>이전</span>
+              <span>Previous</span>
             </button>
             
             <div className="flex space-x-2">
@@ -270,7 +270,7 @@ const DialogueTab = ({ dialogueData }) => {
               disabled={currentDialogue === currentData.dialogues.length - 1}
               className="flex items-center space-x-2 px-4 py-2 bg-gray-500 text-white rounded-lg font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-gray-600 transition-colors duration-300"
             >
-              <span>다음</span>
+              <span>Next</span>
               <ChevronRight size={20} />
             </button>
           </div>

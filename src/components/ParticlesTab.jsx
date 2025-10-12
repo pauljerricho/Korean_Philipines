@@ -145,14 +145,14 @@ const ParticlesTab = ({ particlesData }) => {
               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-300 flex items-center space-x-2"
             >
               <Volume2 size={20} />
-              <span>{isPlaying ? '정지' : '자연스러운 발음'}</span>
+              <span>{isPlaying ? 'Stop' : 'Natural Voice'}</span>
             </button>
             <button
               onClick={() => playAudio(currentParticleData.particle)}
               className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-300 flex items-center space-x-2"
             >
               <Volume2 size={20} />
-              <span>{isPlaying ? '정지' : '기본 발음'}</span>
+              <span>{isPlaying ? 'Stop' : 'Basic Voice'}</span>
             </button>
           </div>
         </div>
@@ -166,7 +166,7 @@ const ParticlesTab = ({ particlesData }) => {
                 <button
                   onClick={() => playAudioWithGoogleTTS(example.korean)}
                   className="text-blue-600 hover:text-blue-800 transition-colors duration-300"
-                  title="자연스러운 발음 듣기"
+                  title="Listen to Natural Voice"
                 >
                   <Volume2 size={16} />
                 </button>
@@ -211,7 +211,7 @@ const ParticlesTab = ({ particlesData }) => {
             className="flex items-center space-x-2 px-4 py-2 bg-gray-500 text-white rounded-lg font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-gray-600 transition-colors duration-300"
           >
             <ChevronLeft size={20} />
-            <span>이전</span>
+            <span>Previous</span>
           </button>
           
           <div className="flex space-x-2">
@@ -231,7 +231,7 @@ const ParticlesTab = ({ particlesData }) => {
             disabled={currentParticle === currentData.particles.length - 1}
             className="flex items-center space-x-2 px-4 py-2 bg-gray-500 text-white rounded-lg font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-gray-600 transition-colors duration-300"
           >
-            <span>다음</span>
+            <span>Next</span>
             <ChevronRight size={20} />
           </button>
         </div>
