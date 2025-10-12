@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { MessageCircle, Volume2, ChevronRight, ChevronLeft, Search, Filter } from 'lucide-react'
 
 const DialogueTab = ({ dialogueData }) => {
+  const [activeDifficulty, setActiveDifficulty] = useState('beginner')
   const [activeCategory, setActiveCategory] = useState('greetings')
   const [currentDialogue, setCurrentDialogue] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -67,11 +68,12 @@ const DialogueTab = ({ dialogueData }) => {
     })
   }
 
-  const currentData = dialogueData.categories.find(cat => cat.id === activeCategory)
-  const currentDialogueData = currentData?.dialogues[currentDialogue]
+  const currentData = dialogueData[activeDifficulty]
+  const currentCategoryData = currentData.categories.find(cat => cat.id === activeCategory)
+  const currentDialogueData = currentCategoryData?.dialogues[currentDialogue]
 
   const nextDialogue = () => {
-    if (currentDialogue < currentData.dialogues.length - 1) {
+    if (currentDialogue < currentCategoryData.dialogues.length - 1) {
       setCurrentDialogue(currentDialogue + 1)
       setShowExplanation(false)
     }
@@ -85,7 +87,7 @@ const DialogueTab = ({ dialogueData }) => {
   }
 
   // 검색 필터링
-  const filteredCategories = dialogueData.categories.map(category => ({
+  const filteredCategories = currentData.categories.map(category => ({
     ...category,
     dialogues: category.dialogues.filter(dialogue => 
       dialogue.korean.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -102,13 +104,50 @@ const DialogueTab = ({ dialogueData }) => {
         <p className="text-lg text-gray-600 mb-6">실생활에서 자주 사용하는 한국어 문장들을 배워보세요!</p>
       </div>
 
+      {/* Difficulty Selection */}
+      <div className="bg-white rounded-2xl shadow-lg p-6">
+        <h3 className="text-xl font-bold text-gray-800 mb-4">📚 Difficulty Level</h3>
+        <div className="flex justify-center space-x-4">
+          <button
+            onClick={() => {
+              setActiveDifficulty('beginner')
+              setActiveCategory('greetings')
+              setCurrentDialogue(0)
+              setShowExplanation(false)
+            }}
+            className={`px-6 py-3 rounded-xl font-semibold transition-colors duration-300 ${
+              activeDifficulty === 'beginner'
+                ? 'bg-green-600 text-white'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            }`}
+          >
+            🌱 Beginner (초급)
+          </button>
+          <button
+            onClick={() => {
+              setActiveDifficulty('intermediate')
+              setActiveCategory('business')
+              setCurrentDialogue(0)
+              setShowExplanation(false)
+            }}
+            className={`px-6 py-3 rounded-xl font-semibold transition-colors duration-300 ${
+              activeDifficulty === 'intermediate'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            }`}
+          >
+            🎯 Intermediate (중급)
+          </button>
+        </div>
+      </div>
+
       {/* Search */}
       <div className="bg-white rounded-2xl shadow-lg p-6">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
           <input
             type="text"
-            placeholder="한국어, 영어, 필리핀어로 검색하세요..."
+            placeholder="Search in Korean, English, or Filipino..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -118,9 +157,9 @@ const DialogueTab = ({ dialogueData }) => {
 
       {/* Category Selection */}
       <div className="bg-white rounded-2xl shadow-lg p-6">
-        <h3 className="text-xl font-bold text-gray-800 mb-4">📚 카테고리 선택</h3>
+        <h3 className="text-xl font-bold text-gray-800 mb-4">📚 Category Selection</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {(searchTerm ? filteredCategories : dialogueData.categories).map((category) => (
+          {(searchTerm ? filteredCategories : currentData.categories).map((category) => (
             <button
               key={category.id}
               onClick={() => {
@@ -136,19 +175,19 @@ const DialogueTab = ({ dialogueData }) => {
             >
               <div className="text-2xl mb-2">{category.icon}</div>
               <div className="font-semibold text-gray-800">{category.title}</div>
-              <div className="text-sm text-gray-600">{category.dialogues.length}개 문장</div>
+              <div className="text-sm text-gray-600">{category.dialogues.length} sentences</div>
             </button>
           ))}
         </div>
       </div>
 
       {/* Current Category Info */}
-      {currentData && (
+      {currentCategoryData && (
         <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl shadow-lg p-6 text-center">
-          <h3 className="text-2xl font-bold mb-2">{currentData.title}</h3>
-          <p className="text-lg opacity-90">{currentData.dialogues.length}개의 일상 문장</p>
+          <h3 className="text-2xl font-bold mb-2">{currentCategoryData.title}</h3>
+          <p className="text-lg opacity-90">{currentCategoryData.dialogues.length} sentences</p>
           <div className="mt-4 text-sm opacity-80">
-            {currentDialogue + 1} / {currentData.dialogues.length} 문장
+            {currentDialogue + 1} / {currentCategoryData.dialogues.length} sentences
           </div>
         </div>
       )}
@@ -251,7 +290,7 @@ const DialogueTab = ({ dialogueData }) => {
             </button>
             
             <div className="flex space-x-2">
-              {currentData.dialogues.map((_, index) => (
+              {currentCategoryData.dialogues.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => {
@@ -267,7 +306,7 @@ const DialogueTab = ({ dialogueData }) => {
 
             <button
               onClick={nextDialogue}
-              disabled={currentDialogue === currentData.dialogues.length - 1}
+              disabled={currentDialogue === currentCategoryData.dialogues.length - 1}
               className="flex items-center space-x-2 px-4 py-2 bg-gray-500 text-white rounded-lg font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-gray-600 transition-colors duration-300"
             >
               <span>Next</span>
@@ -278,13 +317,13 @@ const DialogueTab = ({ dialogueData }) => {
       )}
 
       {/* All Dialogues List */}
-      {currentData && (
+      {currentCategoryData && (
         <div className="bg-white rounded-2xl shadow-lg p-6">
           <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-            📋 전체 문장 목록
+            📋 All Sentences List
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {currentData.dialogues.map((dialogue, index) => (
+            {currentCategoryData.dialogues.map((dialogue, index) => (
               <button
                 key={dialogue.id}
                 onClick={() => {
