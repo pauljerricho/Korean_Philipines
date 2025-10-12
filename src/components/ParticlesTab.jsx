@@ -87,8 +87,8 @@ const ParticlesTab = ({ particlesData }) => {
     <div className="space-y-6">
       {/* Header */}
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">한국어 조사 (Korean Particles)</h2>
-        <p className="text-lg text-gray-600 mb-6">한국어의 중요한 조사들을 배워보세요!</p>
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Korean Particles (한국어 조사)</h2>
+        <p className="text-lg text-gray-600 mb-6">Learn important Korean particles!</p>
       </div>
 
       {/* Category Selection */}
@@ -104,7 +104,7 @@ const ParticlesTab = ({ particlesData }) => {
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           }`}
         >
-          📚 기본 조사
+          📚 Basic Particles
         </button>
         <button
           onClick={() => {
@@ -117,7 +117,7 @@ const ParticlesTab = ({ particlesData }) => {
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           }`}
         >
-          🎯 고급 조사
+          🎯 Advanced Particles
         </button>
       </div>
 
@@ -126,7 +126,7 @@ const ParticlesTab = ({ particlesData }) => {
         <h3 className="text-2xl font-bold mb-2">{currentData.title}</h3>
         <p className="text-lg opacity-90">{currentData.description}</p>
         <div className="mt-4 text-sm opacity-80">
-          {currentParticle + 1} / {currentData.particles.length} 조사
+          {currentParticle + 1} / {currentData.particles.length} particles
         </div>
       </div>
 
@@ -159,7 +159,7 @@ const ParticlesTab = ({ particlesData }) => {
 
         {/* Examples */}
         <div className="space-y-4">
-          <h4 className="text-xl font-semibold text-gray-800 mb-4">📝 예문 (Examples)</h4>
+          <h4 className="text-xl font-semibold text-gray-800 mb-4">📝 Examples (예문)</h4>
           {currentParticleData.examples.map((example, index) => (
             <div key={index} className="bg-gray-50 rounded-lg p-4 space-y-2">
               <div className="flex items-center space-x-2">
@@ -184,7 +184,7 @@ const ParticlesTab = ({ particlesData }) => {
 
         {/* Explanation */}
         <div className="mt-6 space-y-3">
-          <h4 className="text-xl font-semibold text-gray-800 mb-3">💡 설명 (Explanation)</h4>
+          <h4 className="text-xl font-semibold text-gray-800 mb-3">💡 Explanation (설명)</h4>
           <div className="p-4 bg-blue-50 rounded-lg text-gray-700">
             <span className="font-semibold text-blue-800">🇰🇷 한국어:</span><br/>
             {currentParticleData.explanation}
@@ -240,7 +240,7 @@ const ParticlesTab = ({ particlesData }) => {
       {/* All Particles List */}
       <div className="bg-white rounded-2xl shadow-lg p-6">
         <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-          📋 전체 조사 목록
+          📋 All Particles List
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {currentData.particles.map((particle, index) => (
@@ -267,7 +267,7 @@ const ParticlesTab = ({ particlesData }) => {
       {/* Grammar Rules */}
       <div className="bg-white rounded-2xl shadow-lg p-6">
         <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-          📚 문법 규칙 (Grammar Rules)
+          📚 Grammar Rules (문법 규칙)
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-4">
@@ -294,7 +294,7 @@ const ParticlesTab = ({ particlesData }) => {
       {/* Learning Tips */}
       <div className="bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-2xl shadow-lg p-6">
         <h3 className="text-2xl font-bold mb-6 text-center">
-          💡 학습 팁 (Learning Tips)
+          💡 Learning Tips (학습 팁)
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-3">
