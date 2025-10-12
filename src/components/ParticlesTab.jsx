@@ -14,10 +14,23 @@ const ParticlesTab = ({ particlesData }) => {
         return
       }
 
+      // 더 자연스러운 한국어 음성을 위한 설정
       const utterance = new SpeechSynthesisUtterance(text)
       utterance.lang = 'ko-KR'
-      utterance.rate = 0.8
-      utterance.pitch = 1
+      utterance.rate = 0.7  // 조금 더 천천히
+      utterance.pitch = 1.1  // 약간 높은 톤
+      utterance.volume = 0.9
+      
+      // 한국어 음성 엔진 선택 (가능한 경우)
+      const voices = speechSynthesis.getVoices()
+      const koreanVoice = voices.find(voice => 
+        voice.lang.startsWith('ko') && 
+        (voice.name.includes('Korean') || voice.name.includes('한국어'))
+      )
+      
+      if (koreanVoice) {
+        utterance.voice = koreanVoice
+      }
       
       utterance.onstart = () => setIsPlaying(true)
       utterance.onend = () => setIsPlaying(false)
@@ -25,6 +38,34 @@ const ParticlesTab = ({ particlesData }) => {
       
       speechSynthesis.speak(utterance)
     }
+  }
+
+  // Google Translate TTS API 사용 (더 자연스러운 음성)
+  const playAudioWithGoogleTTS = (text) => {
+    if (isPlaying) {
+      setIsPlaying(false)
+      return
+    }
+
+    setIsPlaying(true)
+    
+    // Google Translate TTS API 사용
+    const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=ko&client=tw-ob&q=${encodeURIComponent(text)}`
+    
+    const audio = new Audio(audioUrl)
+    audio.onloadstart = () => setIsPlaying(true)
+    audio.onended = () => setIsPlaying(false)
+    audio.onerror = () => {
+      setIsPlaying(false)
+      // 실패시 기본 TTS로 폴백
+      playAudio(text)
+    }
+    
+    audio.play().catch(() => {
+      setIsPlaying(false)
+      // 실패시 기본 TTS로 폴백
+      playAudio(text)
+    })
   }
 
   const currentData = particlesData[activeCategory]
@@ -98,13 +139,22 @@ const ParticlesTab = ({ particlesData }) => {
           <div className="text-xl text-gray-700 mb-4">
             {currentParticleData.usage}
           </div>
-          <button
-            onClick={() => playAudio(currentParticleData.particle)}
-            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-300 flex items-center space-x-2 mx-auto"
-          >
-            <Volume2 size={20} />
-            <span>{isPlaying ? '정지' : '발음 듣기'}</span>
-          </button>
+          <div className="flex space-x-3 justify-center">
+            <button
+              onClick={() => playAudioWithGoogleTTS(currentParticleData.particle)}
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-300 flex items-center space-x-2"
+            >
+              <Volume2 size={20} />
+              <span>{isPlaying ? '정지' : '자연스러운 발음'}</span>
+            </button>
+            <button
+              onClick={() => playAudio(currentParticleData.particle)}
+              className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-300 flex items-center space-x-2"
+            >
+              <Volume2 size={20} />
+              <span>{isPlaying ? '정지' : '기본 발음'}</span>
+            </button>
+          </div>
         </div>
 
         {/* Examples */}
@@ -114,8 +164,9 @@ const ParticlesTab = ({ particlesData }) => {
             <div key={index} className="bg-gray-50 rounded-lg p-4 space-y-2">
               <div className="flex items-center space-x-2">
                 <button
-                  onClick={() => playAudio(example.korean)}
+                  onClick={() => playAudioWithGoogleTTS(example.korean)}
                   className="text-blue-600 hover:text-blue-800 transition-colors duration-300"
+                  title="자연스러운 발음 듣기"
                 >
                   <Volume2 size={16} />
                 </button>

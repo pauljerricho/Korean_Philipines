@@ -60,12 +60,24 @@ const TopikTab = ({ topikData }) => {
       return
     }
 
-    // Web Speech API를 사용한 음성 합성
+    // Web Speech API를 사용한 음성 합성 (개선된 설정)
     if ('speechSynthesis' in window) {
       const utterance = new SpeechSynthesisUtterance(audioText)
       utterance.lang = 'ko-KR'
-      utterance.rate = 0.8
-      utterance.pitch = 1
+      utterance.rate = 0.7  // 조금 더 천천히
+      utterance.pitch = 1.1  // 약간 높은 톤
+      utterance.volume = 0.9
+      
+      // 한국어 음성 엔진 선택 (가능한 경우)
+      const voices = speechSynthesis.getVoices()
+      const koreanVoice = voices.find(voice => 
+        voice.lang.startsWith('ko') && 
+        (voice.name.includes('Korean') || voice.name.includes('한국어'))
+      )
+      
+      if (koreanVoice) {
+        utterance.voice = koreanVoice
+      }
       
       utterance.onstart = () => {
         setIsPlaying(true)
@@ -308,15 +320,29 @@ const TopikTab = ({ topikData }) => {
             
             {/* Audio Button for Listening Section */}
             {problem.audioText && (
-              <div className="mb-4 flex items-center space-x-4">
-                <button
-                  onClick={() => playAudio(problem.audioText)}
-                  className="flex items-center space-x-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300"
-                >
-                  {isPlaying ? <Pause size={20} /> : <Play size={20} />}
-                  <Volume2 size={20} />
-                  <span>{isPlaying ? '듣기 중지' : '듣기'}</span>
-                </button>
+              <div className="mb-4 space-y-3">
+                <div className="flex items-center space-x-4">
+                  <button
+                    onClick={() => playAudio(problem.audioText)}
+                    className="flex items-center space-x-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300"
+                  >
+                    {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+                    <Volume2 size={20} />
+                    <span>{isPlaying ? '듣기 중지' : '기본 듣기'}</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      // Google TTS 사용
+                      const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=ko&client=tw-ob&q=${encodeURIComponent(problem.audioText)}`
+                      const audio = new Audio(audioUrl)
+                      audio.play().catch(() => playAudio(problem.audioText))
+                    }}
+                    className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                  >
+                    <Volume2 size={20} />
+                    <span>자연스러운 듣기</span>
+                  </button>
+                </div>
                 <span className="text-sm text-gray-600">음성을 듣고 답하세요</span>
               </div>
             )}
