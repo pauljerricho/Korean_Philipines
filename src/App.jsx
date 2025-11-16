@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
-import { BookOpen, Globe, GraduationCap, MessageCircle, Hash } from 'lucide-react'
+import { BookOpen, Globe, GraduationCap, MessageCircle, Hash, Calculator } from 'lucide-react'
 import VocabularyTab from './components/VocabularyTab'
 import GrammarTab from './components/GrammarTab'
 import HangulTab from './components/HangulTab'
 import DialogueTab from './components/DialogueTab'
 import ParticlesTab from './components/ParticlesTab'
+import NumbersTab from './components/NumbersTab'
 
 // 데이터 import
 import vocabularyData from './data/vocabularyData'
 import grammarData from './data/grammarData'
 import dialogueData from './data/dialogueData'
 import particlesData from './data/particlesData'
+import numbersData from './data/numbersData'
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('hangul')
@@ -20,6 +22,7 @@ const App = () => {
     { id: 'vocabulary', label: 'Vocabulary', icon: BookOpen },
     { id: 'grammar', label: 'Grammar', icon: GraduationCap },
     { id: 'particles', label: 'Particles', icon: Hash },
+    { id: 'numbers', label: 'Numbers', icon: Calculator },
     { id: 'dialogue', label: 'Dialogue', icon: MessageCircle }
   ]
 
@@ -113,6 +116,9 @@ const App = () => {
         )}
         {activeTab === 'particles' && (
           <ParticlesTab particlesData={particlesData} />
+        )}
+        {activeTab === 'numbers' && (
+          <NumbersTab numbersData={numbersData} />
         )}
         {activeTab === 'dialogue' && (
           <DialogueTab dialogueData={dialogueData} />
