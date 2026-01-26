@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BookOpen, Globe, GraduationCap, MessageCircle, Hash, Calculator, ClipboardCheck } from 'lucide-react'
+import { BookOpen, Globe, GraduationCap, MessageCircle, Hash, Calculator, ClipboardCheck, Award } from 'lucide-react'
 import VocabularyTab from './components/VocabularyTab'
 import GrammarTab from './components/GrammarTab'
 import HangulTab from './components/HangulTab'
@@ -7,6 +7,7 @@ import DialogueTab from './components/DialogueTab'
 import ParticlesTab from './components/ParticlesTab'
 import NumbersTab from './components/NumbersTab'
 import ReviewTestTab from './components/ReviewTestTab'
+import Topik1Tab from './components/Topik1Tab'
 
 // 데이터 import
 import vocabularyData from './data/vocabularyData'
@@ -14,6 +15,7 @@ import grammarData from './data/grammarData'
 import dialogueData from './data/dialogueData'
 import particlesData from './data/particlesData'
 import numbersData from './data/numbersData'
+import topik1Data from './data/topik1Data'
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('hangul')
@@ -25,7 +27,8 @@ const App = () => {
     { id: 'particles', label: 'Particles', icon: Hash },
     { id: 'numbers', label: 'Numbers', icon: Calculator },
     { id: 'dialogue', label: 'Dialogue', icon: MessageCircle },
-    { id: 'review', label: 'Review Test', icon: ClipboardCheck }
+    { id: 'review', label: 'Review Test', icon: ClipboardCheck },
+    { id: 'topik1', label: 'TOPIK 1', icon: Award }
   ]
 
   const getCategoryIcon = (category) => {
@@ -131,6 +134,9 @@ const App = () => {
             getCategoryIcon={getCategoryIcon}
             getCategoryName={getCategoryName}
           />
+        )}
+        {activeTab === 'topik1' && (
+          <Topik1Tab topik1Data={topik1Data} />
         )}
       </main>
 
